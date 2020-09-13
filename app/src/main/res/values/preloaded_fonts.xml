@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/allerta</item>
+        <item>@font/amiko</item>
+        <item>@font/amita</item>
+        <item>@font/atomic_age</item>
+        <item>@font/averia_libre_light</item>
+        <item>@font/basic</item>
+        <item>@font/cabin</item>
+        <item>@font/cabin_sketch</item>
+        <item>@font/cagliostro</item>
+        <item>@font/cairo</item>
+        <item>@font/cantora_one</item>
+        <item>@font/fenix</item>
+        <item>@font/oranienbaum</item>
+        <item>@font/rosario</item>
+        <item>@font/source_sans_pro</item>
+    </array>
+</resources>
