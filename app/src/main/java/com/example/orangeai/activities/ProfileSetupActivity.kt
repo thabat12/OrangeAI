@@ -1,5 +1,8 @@
 package com.example.orangeai.activities
 
+import android.app.Activity
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -18,6 +21,9 @@ import kotlinx.android.synthetic.main.activity_profile_setup.*
 
 
 class ProfileSetupActivity : BaseActivity() {
+
+
+
     val TAG = javaClass.simpleName
 
 
@@ -48,6 +54,7 @@ class ProfileSetupActivity : BaseActivity() {
                     TAG, "Error while getting loggedIn user details", e)
             }
 
+
         profile_setup_button.setOnClickListener {
             val age = age_setup.text.toString().toInt()
             val heightFeet = height_feet_setup.text.toString().toInt()
@@ -66,6 +73,9 @@ class ProfileSetupActivity : BaseActivity() {
 
 
     }
+
+
+
 
     private fun dataPreprocessing(age: Int, heightFeet: Int, heightInches: Int, weight:Int) {
         if (age >= 110) {
