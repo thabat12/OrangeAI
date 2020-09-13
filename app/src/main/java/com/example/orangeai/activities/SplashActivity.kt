@@ -1,6 +1,8 @@
 package com.example.orangeai.activities
 
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -39,7 +41,7 @@ class SplashActivity : BaseActivity() {
             val currentUserID = FirestoreClass().getCurrentUserID()
             if (currentUserID.isNotEmpty()) {
                 // Start the Main Activity
-               startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                FirestoreClass().signInUser(this@SplashActivity)
             } else {
                 // Start the Intro Activity
                 startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
@@ -49,8 +51,30 @@ class SplashActivity : BaseActivity() {
             overridePendingTransition(
                 R.anim.slide_in_right,
                 R.anim.slide_out_left
-            )
-            finish() // Call this when your activity is done and should be closed.
+            ) // Call this when your activity is done and should be closed.
         }, 2500)
+
+
     }
+
+
+
+
+    fun finishSetup() {
+        startActivity(Intent(this@SplashActivity, ProfileSetupActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+
+    }
+    fun goToMain() {
+        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+    }
+
+
 }

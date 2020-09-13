@@ -122,9 +122,18 @@ class FirestoreClass {
                         if (loggedInUser.age == 0) {
                             activity.setUpUser()
 
-                        } else {
+                        }else {
                             activity.signInSuccess(loggedInUser)
                         }
+                    }
+                    is SplashActivity -> {
+                        if (loggedInUser.age == 0) {
+                            activity.finishSetup()
+
+                        } else {
+                            activity.goToMain()
+                        }
+
                     }
 
                     // END
