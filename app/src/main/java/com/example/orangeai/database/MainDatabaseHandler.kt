@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.airbnb.lottie.animation.content.Content
 import com.example.orangeai.models.FoodNutrients
 import com.example.orangeai.utils.Constants.DBVERSION
 import java.util.*
@@ -39,7 +40,9 @@ class MainDatabaseHandler(context: Context) :
         private const val TABLE_MAIN_DATABASE = "main_database"
         private const val COLUMN_ID_MAIN = "_id"
         private const val CALORIES_BURNED = "calories_burned"
+        private const val CALORIES_BURNED_GOAL = "calories_burned_goal"
         private const val CALORIES_GAINED = "calories_gained"
+        private const val CALORIES_GAINED_GOAL = "calories_gained_goal"
         private const val WATER_INTAKE = "water_intake"
         private const val STEPS_TAKEN = "steps_taken"
         private const val EXERCISE_AWARD = "exercise_award"
@@ -74,11 +77,15 @@ class MainDatabaseHandler(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase?) {
 
+
+
         val CREATE_MAIN_TABLE = ("CREATE TABLE " + TABLE_MAIN_DATABASE + "("
                 + COLUMN_ID_MAIN + " INTEGER PRIMARY KEY,"
                 + STEPS_TAKEN + " INTEGER,"
                 + CALORIES_BURNED + " INTEGER,"
+                + CALORIES_BURNED_GOAL + " INTEGER,"
                 + CALORIES_GAINED + " INTEGER,"
+                + CALORIES_GAINED_GOAL + " INTEGER,"
                 + WATER_INTAKE + " INTEGER,"
                 + EXERCISE_AWARD + " INTEGER,"
                 + DIET_AWARD + " INTEGER,"
@@ -258,6 +265,39 @@ class MainDatabaseHandler(context: Context) :
         val contentValues = ContentValues()
         contentValues.put(CALORIES_BURNED, calBurnedTotal)
 
+        db.update(TABLE_MAIN_DATABASE, contentValues, COLUMN_ID_MAIN + "=" + index, null)
+        db.close()
+
+    }
+
+    fun updateGoals(bmr: Double, program: Int, weight: Int) {
+        val db = this.writableDatabase
+        val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        Log.e("did u do this?", "ya")
+
+        cursor.moveToLast()
+        val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))
+        val contentValues = ContentValues()
+        val caloriesChangeAvg = bmr * 1.55
+        var caloriesBGoal = 0
+        var caloriesGGoal = 0
+
+
+        // programs 1. loseWeight  2. buildMuscle  3. becomeFit
+        if (program == 1) {
+            caloriesBGoal = (caloriesChangeAvg * 1.02).toInt()
+            caloriesGGoal = (caloriesChangeAvg * 0.96).toInt()
+        } else if (program == 2) {
+            caloriesBGoal = (caloriesChangeAvg).toInt()
+            caloriesGGoal = (caloriesChangeAvg).toInt()
+        } else if (program == 3) {
+            caloriesBGoal = (caloriesChangeAvg + 1.02).toInt()
+            caloriesGGoal = (caloriesChangeAvg * 1.08).toInt()
+        }
+
+        contentValues.put(CALORIES_GAINED_GOAL, caloriesGGoal)
+        contentValues.put(CALORIES_BURNED_GOAL, caloriesBGoal)
         db.update(TABLE_MAIN_DATABASE, contentValues, COLUMN_ID_MAIN + "=" + index, null)
         db.close()
 
