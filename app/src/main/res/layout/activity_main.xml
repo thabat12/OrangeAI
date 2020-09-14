@@ -282,7 +282,7 @@
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="370dp"
                                 android:layout_height="wrap_content"
-                                android:background="@color/colorGradientStart"
+                                android:background="@drawable/gradient7"
                                 android:minHeight="200dp"
                                 >
 
