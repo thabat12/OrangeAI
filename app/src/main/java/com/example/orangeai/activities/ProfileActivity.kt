@@ -77,9 +77,11 @@ class ProfileActivity : BaseActivity() {
             //finish()
         }
         log_out_profile.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            intent = Intent(this, IntroActivity::class.java)
-            startActivity(intent)
+//            FirebaseAuth.getInstance().signOut()
+//            intent = Intent(this, IntroActivity::class.java)
+//            startActivity(intent)
+            startActivity(Intent(this, ProfileSetupActivity::class.java))
+            finish()
         }
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,

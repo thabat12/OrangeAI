@@ -8,6 +8,8 @@ data class User(
     val name: String = "",
     val email: String = "",
     val image: String = "",
+    var gender: Int = 0, // 5
+    var program : Int = 0,
     var age: Int = 0,
     var height: Int = 0,
     var weight: Int = 0,
@@ -20,6 +22,8 @@ data class User(
         source.readString()!!,
         source.readString()!!,
         source.readString()!!,
+        source.readInt(),
+        source.readInt(),
         source.readInt(),
         source.readInt(),
         source.readInt(),

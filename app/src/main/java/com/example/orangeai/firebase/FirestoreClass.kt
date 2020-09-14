@@ -4,6 +4,7 @@ import android.app.Activity
 import android.util.Log
 import android.widget.Toast
 import com.example.orangeai.activities.*
+import com.example.orangeai.database.MainDatabaseHandler
 import com.example.orangeai.models.User
 import com.example.orangeai.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -72,6 +73,9 @@ class FirestoreClass {
                     }
                     is PerformExerciseActivityReps -> {
                         activity.customizeCaloriesReps(loggedInUser)
+                    }
+                    is ProfileSetupActivity -> {
+                        activity.setName(loggedInUser)
                     }
                 }
             }
