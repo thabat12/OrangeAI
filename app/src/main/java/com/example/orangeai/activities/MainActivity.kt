@@ -29,36 +29,6 @@ import java.util.*
 
 class MainActivity : BaseActivity() {
 
-    //    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//
-//        home_move.setOnClickListener {
-//            intent = Intent(this@MainActivity, ExerciseActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//        home_diet.setOnClickListener {
-//            intent = Intent(this@MainActivity, DietActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//        home_profile.setOnClickListener {
-//            intent = Intent(this@MainActivity, ProfileActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//        addFoodTab_today.setOnClickListener {
-//            intent = Intent(this@MainActivity, AddFoodActivity::class.java)
-//            startActivity(intent)
-//            //finish()
-//        }
-//
-//
-//
-//
-//
-//    }
     val CITY: String = "delhi,in"
     val API: String = "8118ed6ee68db2debfaaa5a44c832918" // Use your own API key
 
@@ -101,7 +71,22 @@ class MainActivity : BaseActivity() {
         val mainDBHandler = MainDatabaseHandler(this)
         val todayDetails = mainDBHandler.getTodayData()
 
-        testyy.text = todayDetails[1].toString()
+        val calBCurrent = todayDetails.caloriesBurned
+        val calBGoal = todayDetails.caloriesBurnGoal
+        val calGCurrent = todayDetails.caloriesGained
+        val calGGoal = todayDetails.caloriesGainGoal
+
+        tv_calories_burned.text = "$calBCurrent /$calBGoal Calories Burned"
+        tv_calories_gained.text = "$calGCurrent /$calGGoal Calories Gained"
+
+        val calBProgress = ((calBCurrent.toDouble() / calBGoal.toDouble()) * 100).toInt()
+        val calGProgress = ((calGCurrent.toDouble() / calGGoal.toDouble()) * 100).toInt()
+
+        pb_calories_burn.progress = calBProgress
+        pb_calories_gain.progress = calGProgress
+
+        tv_program_name.text = todayDetails.program
+        tv_program_day.text = "Program day ${todayDetails.currentDay.toString()} /30 "
     }
 
 

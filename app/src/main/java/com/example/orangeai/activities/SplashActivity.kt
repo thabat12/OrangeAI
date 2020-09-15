@@ -8,26 +8,54 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.WindowManager
 import com.example.orangeai.R
 import com.example.orangeai.database.ExerciseHistoryDatabaseHandler
 import com.example.orangeai.database.MainDatabaseHandler
+import com.example.orangeai.models.Today
+import com.example.orangeai.models.User
+import com.example.orangeai.utils.Constants
+import com.google.firebase.firestore.FirebaseFirestore
 import com.projemanag.firebase.FirestoreClass
+import kotlinx.android.synthetic.main.activity_profile_setup.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class SplashActivity : BaseActivity() {
+
+    var keepRunning = true
+    lateinit var firestoreContents: User
+    private val sFireStore = FirebaseFirestore.getInstance()
+
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+
+
+
         val currentTime = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault())
             .format(Date())
-
-
         val dbHandlerMain = MainDatabaseHandler(this)
-        dbHandlerMain.initializeDatabase(currentTime)
+
+        sFireStore.collection(Constants.USERS)
+            .document(getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Setting it all up!", document.toString())
+
+                // Here we have received the document snapshot which is converted into the User Data model object.
+                firestoreContents = document.toObject(User::class.java)!!
+                dbHandlerMain.initializeDatabase(currentTime, firestoreContents)
+
+            }
+            .addOnFailureListener { e ->
+                // END
+                Log.e(
+                    "oops!", "Error while getting loggedIn user details", e)
+            }
 
 
 
@@ -38,10 +66,16 @@ class SplashActivity : BaseActivity() {
         )
         Handler(Looper.getMainLooper()).postDelayed({
 
+
+
             val currentUserID = FirestoreClass().getCurrentUserID()
             if (currentUserID.isNotEmpty()) {
                 // Start the Main Activity
                 FirestoreClass().signInUser(this@SplashActivity)
+//
+//                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+
             } else {
                 // Start the Intro Activity
                 startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
@@ -56,8 +90,6 @@ class SplashActivity : BaseActivity() {
 
 
     }
-
-
 
 
     fun finishSetup() {
@@ -75,6 +107,8 @@ class SplashActivity : BaseActivity() {
             R.anim.slide_out_left
         )
     }
+
+
 
 
 }
