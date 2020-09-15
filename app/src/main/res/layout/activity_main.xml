@@ -172,14 +172,15 @@
                                 app:layout_constraintTop_toBottomOf="@+id/linearLayout15">
 
                                 <TextView
+                                    android:id="@+id/tv_calories_burned"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="420 Calories Gained"
+                                    android:text="420 Calories Burned"
                                     android:textColor="@color/white" />
 
                                 <ProgressBar
-                                    android:id="@+id/caloried_gain"
+                                    android:id="@+id/pb_calories_burn"
                                     style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                                     android:layout_width="300dp"
                                     android:layout_height="7dp"
@@ -188,15 +189,16 @@
                                     android:progressDrawable="@drawable/progress_drawable" />
 
                                 <TextView
+                                    android:id="@+id/tv_calories_gained"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="15dp"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="810 Calories Burned"
+                                    android:text="810 Calories Gained"
                                     android:textColor="@color/white" />
 
                                 <ProgressBar
-                                    android:id="@+id/calories_burn"
+                                    android:id="@+id/pb_calories_gain"
                                     style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                                     android:layout_width="300dp"
                                     android:layout_height="7dp"
@@ -229,7 +231,7 @@
 
                                 <TextView
                                     android:textColor="@android:color/white"
-                                    android:id="@+id/textView20"
+                                    android:id="@+id/tv_program_day"
                                     android:layout_width="122dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="20dp"
@@ -241,6 +243,7 @@
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
+                                    android:id="@+id/tv_program_name"
                                     android:layout_marginLeft="20dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -249,7 +252,7 @@
                                     android:textColor="@color/white"
                                     android:text="Lose weight"
                                     app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                                    app:layout_constraintTop_toBottomOf="@+id/tv_program_day" />
 
                                 <Button
                                     android:textColor="@android:color/white"

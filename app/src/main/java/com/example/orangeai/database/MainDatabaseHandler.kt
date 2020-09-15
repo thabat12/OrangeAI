@@ -10,7 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.airbnb.lottie.animation.content.Content
 import com.example.orangeai.models.FoodNutrients
+import com.example.orangeai.models.Today
+import com.example.orangeai.models.User
 import com.example.orangeai.utils.Constants.DBVERSION
+import com.projemanag.firebase.FirestoreClass
 import java.util.*
 
 class MainDatabaseHandler(context: Context) :
@@ -39,6 +42,7 @@ class MainDatabaseHandler(context: Context) :
         // Main Database
         private const val TABLE_MAIN_DATABASE = "main_database"
         private const val COLUMN_ID_MAIN = "_id"
+        private const val PROGRAM = "program_name"
         private const val CALORIES_BURNED = "calories_burned"
         private const val CALORIES_BURNED_GOAL = "calories_burned_goal"
         private const val CALORIES_GAINED = "calories_gained"
@@ -81,6 +85,7 @@ class MainDatabaseHandler(context: Context) :
 
         val CREATE_MAIN_TABLE = ("CREATE TABLE " + TABLE_MAIN_DATABASE + "("
                 + COLUMN_ID_MAIN + " INTEGER PRIMARY KEY,"
+                + PROGRAM + " TEXT,"
                 + STEPS_TAKEN + " INTEGER,"
                 + CALORIES_BURNED + " INTEGER,"
                 + CALORIES_BURNED_GOAL + " INTEGER,"
@@ -129,12 +134,39 @@ class MainDatabaseHandler(context: Context) :
         onCreate(db)
     }
 
-    fun initializeDatabase(date: String) {
+    fun initializeDatabase(date: String, user: User) {
+
+        Log.e("Initialize", "works")
+        // Get the details age/ weight/ height and convert to BMR
+        Log.e("the string one", user.toString())
+
+        // TODO: make initializing the database take into account details in Firebase as well
+        var calBGoal = 0
+        var calGGoal = 0
+        var programName = ""
+        if (user.program == 1) {
+            calBGoal = (user.goal * 1.02).toInt()
+            calGGoal = (user.goal * 0.96).toInt()
+            programName = "Lose Weight"
+        } else if (user.program == 2) {
+            calBGoal = (user.goal).toInt()
+            calGGoal = (user.goal).toInt()
+            programName = "Become Fit"
+        } else {
+            calBGoal = (user.goal + 1.02).toInt()
+            calGGoal = (user.goal * 1.08).toInt()
+            programName = "Build Muscle"
+        }
+
+
+
+
+        // Prepare Database
         val db = this.readableDatabase
         val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
         var addNewEntry = true
 
-        try {
+        try { // Go through to see if new values need to be added
             val cursor: Cursor = db.rawQuery(selectQuery, null)
             if (cursor.moveToFirst()) {
                 do {
@@ -149,14 +181,16 @@ class MainDatabaseHandler(context: Context) :
         } catch (e: SQLiteException) {
             db.execSQL(selectQuery)
         }
-
         if (addNewEntry) {
-            var contentValues: ContentValues
+            val contentValues: ContentValues
             contentValues = ContentValues()
             // contentValues.put(COLUMN_ID, model[i].id)
+            contentValues.put(PROGRAM, programName)
             contentValues.put(STEPS_TAKEN, 0)
             contentValues.put(CALORIES_BURNED, 0)
+            contentValues.put(CALORIES_BURNED_GOAL, calBGoal)
             contentValues.put(CALORIES_GAINED, 0)
+            contentValues.put(CALORIES_GAINED_GOAL, calGGoal)
             contentValues.put(WATER_INTAKE, 0)
             contentValues.put(EXERCISE_AWARD, 0)
             contentValues.put(DIET_AWARD, 0)
@@ -165,33 +199,33 @@ class MainDatabaseHandler(context: Context) :
             db.insert(TABLE_MAIN_DATABASE, null, contentValues)
             db.close()
         }
-
     }
 
-    fun getTodayData() : ArrayList<Int> {
-        var integerArray: ArrayList<Int> = ArrayList()
+    fun getTodayData() : Today {
         val db = this.writableDatabase
         val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
+
         val cursor: Cursor = db.rawQuery(selectQuery, null)
         cursor.moveToLast()
 
-
         val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))
+        val programName = cursor.getString(cursor.getColumnIndex(PROGRAM))
+        val stepsTaken = cursor.getString(cursor.getColumnIndex(STEPS_TAKEN))
+        val calG = cursor.getInt(cursor.getColumnIndex(CALORIES_GAINED))
+        val calGG = cursor.getInt(cursor.getColumnIndex(CALORIES_GAINED_GOAL))
+        val calB = cursor.getInt(cursor.getColumnIndex(CALORIES_BURNED))
+        val calBG = cursor.getInt(cursor.getColumnIndex(CALORIES_BURNED_GOAL))
         val water = cursor.getInt(cursor.getColumnIndex(WATER_INTAKE))
         val awardE = cursor.getInt(cursor.getColumnIndex(EXERCISE_AWARD))
         val awardD = cursor.getInt(cursor.getColumnIndex(DIET_AWARD))
         val date = cursor.getString(cursor.getColumnIndex(DATE))
-        val calG = cursor.getInt(cursor.getColumnIndex(CALORIES_GAINED))
-        val calB = cursor.getInt(cursor.getColumnIndex(CALORIES_BURNED))
-        val contentValues = ContentValues()
+        val currentDay = cursor.position + 1
 
-        integerArray.add(calB)
-        integerArray.add(calG)
-        integerArray.add(water)
-        integerArray.add(awardD)
-        integerArray.add(awardE)
 
-        return integerArray
+        val todayModel: Today = Today(index, currentDay, programName, stepsTaken, calB, calBG, calG,
+            calGG, water, awardE, awardD, date)
+
+        return todayModel
 
 
     }
@@ -274,7 +308,6 @@ class MainDatabaseHandler(context: Context) :
         val db = this.writableDatabase
         val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
         val cursor: Cursor = db.rawQuery(selectQuery, null)
-        Log.e("did u do this?", "ya")
 
         cursor.moveToLast()
         val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))

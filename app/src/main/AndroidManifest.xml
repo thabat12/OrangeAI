@@ -23,9 +23,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".background.SensorIntentService"
-            android:exported="false"></service>
-        <service
             android:name=".background.SensorService"
             android:enabled="true"
             android:exported="true" />
@@ -65,6 +62,7 @@
         <activity android:name=".activities.BaseActivity" />
         <activity
             android:name=".activities.ExerciseActivity"
+            
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme" />
         <activity

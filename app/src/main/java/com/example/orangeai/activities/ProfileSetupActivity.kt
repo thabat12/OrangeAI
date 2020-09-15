@@ -99,7 +99,7 @@ class ProfileSetupActivity : BaseActivity() {
             val heightInches = height_inches_setup.text.toString().toInt()
             val weight = weight_setup.text.toString().toInt()
             // The goal page will be a seperate method using on click listeners for imageViews
-            dataPreprocessing(age, heightFeet, heightInches, weight, genderP, program)
+
 
             var BMR: Double = 0.0
             if (female) {
@@ -107,6 +107,10 @@ class ProfileSetupActivity : BaseActivity() {
             } else {
                 BMR = 66 + (6.23 * weight) + (12.7 * ((heightFeet * 12) + heightInches)) - (6.8 * age)
             }
+
+            val caloriesChangeAvg = (BMR * 1.55).toInt()
+
+            dataPreprocessing(age, heightFeet, heightInches, weight, genderP, program, caloriesChangeAvg)
 
             val databaseMainHandler = MainDatabaseHandler(this)
             databaseMainHandler.updateGoals(BMR, program, weight)
@@ -182,7 +186,7 @@ class ProfileSetupActivity : BaseActivity() {
 
 
 
-    private fun dataPreprocessing(age: Int, heightFeet: Int, heightInches: Int, weight:Int, gender: Int, program: Int) {
+    private fun dataPreprocessing(age: Int, heightFeet: Int, heightInches: Int, weight:Int, gender: Int, program: Int, goal: Int) {
         if (age >= 110) {
             showErrorSnackBar("Invalid age! Please try again.")
         }
@@ -194,8 +198,9 @@ class ProfileSetupActivity : BaseActivity() {
         }
         userInfoProfileSetup.age = age
         userInfoProfileSetup.height = heightInInches
+        userInfoProfileSetup.goal = goal
         userInfoProfileSetup.weight = weight
-        userInfoProfileSetup.gender = genderP
+        userInfoProfileSetup.gender = gender
         userInfoProfileSetup.program = program
         addUserDetails(userInfoProfileSetup)
 
