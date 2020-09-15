@@ -273,7 +273,7 @@
                     android:id="@+id/see_exercises"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#E4E4E4"
+                    android:background="@drawable/gradient8"
                     android:gravity="center"
                     android:orientation="vertical">
                     <TextView
