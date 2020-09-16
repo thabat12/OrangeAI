@@ -5,55 +5,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PerformExerciseActivityMins">
+    tools:context=".activities.PerformExerciseActivityMins"
+    android:background="@color/white">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationViewbg"
-        android:layout_width="match_parent"
-        android:layout_height="760dp"
-        android:layout_gravity="center"
+
+    <!--    <com.airbnb.lottie.LottieAnimationView-->
+    <!--        android:id="@+id/animationViewbg"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="820dp"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="1.0"-->
+    <!--        app:lottie_autoPlay="true"-->
+    <!--        app:lottie_loop="true"-->
+    <!--        app:lottie_url="https://assets3.lottiefiles.com/packages/lf20_OXZeQi.json" />-->
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/db"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_url="https://assets9.lottiefiles.com/temp/lf20_cch6XX.json" />
-
+        app:layout_constraintVertical_bias="0.239" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView3"
-        android:layout_width="800dp"
-        android:layout_height="800dp"
+        android:layout_width="520dp"
+        android:layout_height="520dp"
         android:layout_gravity="center"
         android:layout_margin="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.161"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_I8GZgX.json" />
+        app:lottie_url="https://assets5.lottiefiles.com/temp/lf20_K46qfq.json" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView3Stop"
-        android:layout_width="800dp"
-        android:layout_height="800dp"
+        android:layout_width="520dp"
+        android:layout_height="520dp"
         android:layout_gravity="center"
         android:layout_margin="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.165"
         app:lottie_autoPlay="false"
         app:lottie_loop="true"
-        app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_I8GZgX.json" />
+        app:lottie_url="https://assets5.lottiefiles.com/temp/lf20_K46qfq.json" />
 
     <LinearLayout
         android:visibility="visible"
@@ -104,8 +115,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/bottom_bar_show"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
-        tools:layout_editor_absoluteX="-16dp"
-        android:background="@drawable/gradient2">
+        tools:layout_editor_absoluteX="-16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -116,7 +126,7 @@
                 android:id="@+id/exercise_title_perform"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text='Sit Ups'
+                android:text='SITUPS'
                 android:layout_marginStart="160dp"
                 android:layout_marginTop="17dp"
                 android:fontFamily="@font/basic"
@@ -142,36 +152,87 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView1"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <!--    <com.airbnb.lottie.LottieAnimationView-->
+    <!--        android:id="@+id/animationView1"-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="100dp"-->
+    <!--        android:layout_gravity="center"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.411"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.515"-->
+    <!--        app:lottie_autoPlay="true"-->
+    <!--        app:lottie_loop="true"-->
+    <!--        app:lottie_url="https://assets4.lottiefiles.com/packages/lf20_vT2Gkd.json" />-->
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="65dp"
         android:layout_gravity="center"
+        android:src="@drawable/caloriesicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintHorizontal_bias="0.267"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.787"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_url="https://assets4.lottiefiles.com/packages/lf20_vT2Gkd.json" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <TextView
         android:id="@+id/elapsed_time_check"
-        android:layout_width="123dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="80dp"
+        android:layout_width="72dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="264dp"
         android:gravity="center"
         android:text="0.0"
-        android:textColor="#fff"
+        android:textColor="#000000"
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_bar_show"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintVertical_bias="0.57" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:src="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:src="@drawable/caloriesicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.513" />
+
+    <TextView
+        android:layout_width="72dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="264dp"
+        android:gravity="center"
+        android:text="0.0"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar_show"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.57" />
 
 
     <!-- TOP: when the exercise begins BOTTOM: when the exercise is about to begin -->
