@@ -8,11 +8,14 @@
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:foreground="?attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/item_happy_place_cv_corner_radius"
+        app:cardCornerRadius="15dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,30 +24,31 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="@dimen/item_happy_places_content_padding"
-            android:background="#E4E4E4">
+            android:background="@drawable/background_gradient">
 
             <ImageView
                 android:id="@+id/iv_for_today_exercises"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:contentDescription="image of cool guy"
-                android:src="@drawable/ic_round_directions_walk_24"
+                android:src="@drawable/weight"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.52"
-                app:tint="@android:color/holo_green_light" />
+                app:tint="#FFFFFF" />
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:id="@+id/tv_for_today_exercises"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="@dimen/item_happy_place_title_textSize"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +67,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@android:color/black" />
+                app:tint="#FFFFFF" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

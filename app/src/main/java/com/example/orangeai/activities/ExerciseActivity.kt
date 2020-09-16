@@ -143,11 +143,11 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
 
         if (getExerciseTodoList.size > 0) {
             rv_for_today_exercises.visibility = View.VISIBLE
-            tv_no_exercises.visibility = View.GONE
+            pls_add_bithc.visibility = View.GONE
             setupExerciseTodoListRecyclerView(getExerciseTodoList)
         } else {
             rv_for_today_exercises.visibility = View.GONE
-            tv_no_exercises.visibility = View.VISIBLE
+            pls_add_bithc.visibility = View.VISIBLE
         }
     }
 

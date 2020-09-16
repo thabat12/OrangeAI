@@ -1,6 +1,7 @@
 package com.example.orangeai.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,8 @@ open class ForTodayExerciseAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
+        Log.e("list size", list.size.toString())
+
         return MyViewHolder(
             LayoutInflater.from(context).inflate(
                 R.layout.rv_for_today_exercises,
@@ -30,6 +33,8 @@ open class ForTodayExerciseAdapter(
                 false
             )
         )
+
+
     }
 
 

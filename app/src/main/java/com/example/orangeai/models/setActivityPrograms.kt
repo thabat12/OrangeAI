@@ -9,7 +9,7 @@ class setActivityPrograms(context: Context) {
         val dataModels : ArrayList<ActivityPrograms> = ArrayList()
 
         val walking = ActivityPrograms(
-            1, 1, "Walking", "something", 4.0, 4.96, 5.93
+            1, 2, "Walking", "something", 4.0, 4.96, 5.93
         )
         dataModels.add(walking)
 
@@ -20,7 +20,7 @@ class setActivityPrograms(context: Context) {
         dataModels.add(running)
 
         val cycling = ActivityPrograms(
-            1, 1,"Cycling", "something", 7.0, 8.6, 10.36
+            1, 2,"Cycling", "something", 7.0, 8.6, 10.36
 
         )
         dataModels.add(cycling)
@@ -33,13 +33,13 @@ class setActivityPrograms(context: Context) {
         dataModels.add(swimming)
 
         val squats = ActivityPrograms(
-            1,2, "Squats", "something",0.32, 0.40, 0.48
+            1,3, "Squats", "something",0.32, 0.40, 0.48
 
         )
         dataModels.add(squats)
 
         val burpees = ActivityPrograms(
-            1, 2,"Burpees", "something",1.1, 1.1, 1.1
+            1, 3,"Burpees", "something",1.1, 1.1, 1.1
 
         )
         dataModels.add(burpees)
