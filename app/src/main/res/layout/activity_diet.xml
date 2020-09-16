@@ -1,1013 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<RelativeLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColorHomeScreen"
-    android:gravity="left"
-    android:orientation="vertical">
+    android:background="@android:color/white"
+    android:gravity="bottom"
+    tools:ignore="ExtraText">
 
-    <androidx.appcompat.widget.Toolbar
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="#FFFFFF"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:elevation="5dp"
+        android:layout_height="70dp"
         android:gravity="left"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingTop="20dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="10dp">
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="50dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Diet"
+            android:textColor="#171717"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.083"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <SearchView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:cardCornerRadius="20dp">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient2"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="14dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Calories Gained today: X"
-                android:textColor="#FFFFFF"
-                android:textSize="30sp" />
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                app:srcCompat="@drawable/caloriesicon" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_color="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.918"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="500dp"
             android:orientation="vertical"
-            android:paddingTop="80dp"
-            android:paddingBottom="140dp">
+            android:paddingBottom="100dp"
+            tools:context=".MainActivity">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="40dp">
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="22dp"
+                app:cardCornerRadius="9dp">
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    app:srcCompat="@drawable/ic_baseline_add_circle_24" />
-
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorGradientCenter"
-                android:elevation="40dp"
-                app:cardCornerRadius="50dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#FF6044"
-
-                    android:orientation="vertical"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
+                <RelativeLayout
+                    android:id="@+id/edit_profile_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="300dp"
+                    android:background="@drawable/gradient4">
 
 
                     <TextView
-                        android:id="@+id/textViewx5"
-                        android:layout_width="186dp"
-                        android:layout_height="74dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="254dp"
+                        android:fontFamily="@font/basic"
+                        android:paddingLeft="15dp"
+                        android:text="Recently Eaten"
+                        android:textColor="@android:color/white"
+                        android:textSize="23sp" />
 
 
-                        android:fontFamily="casual"
-                        android:text="Chicken Parm Peppers"
-                        android:textAlignment="center"
-                        android:textColor="@color/lightGray"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView1-2"
-                        android:layout_width="338dp"
-                        android:layout_height="99dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginBottom="84dp"
+                        android:gravity="center">
 
 
-                        android:fontFamily="monospace"
-                        android:text="Halved bell peppers filled and cooked with a cheesy chicken filling. Takes around 1 hour to make. Gives 4 servings of 2 halves each."
-                        android:textAlignment="inherit"
-                        android:textColor="@color/lightGray"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.1">
 
-                    </TextView>
+
+                    </LinearLayout>
+
+
+
+
 
                     <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:srcCompat="@drawable/down_arrow" />
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:src="@drawable/arrow_white"
+                        android:visibility="invisible" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
-                        app:cardCornerRadius="50dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@android:color/white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
 
-                        <ImageView
-                            android:id="@+id/imageView4"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/pepper_dish" />
-                    </androidx.cardview.widget.CardView>
+                            android:orientation="vertical"
+                            android:layout_marginRight="30dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="85dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+<!--                            <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@drawable/proteinicon"-->
+<!--                                app:tint="#26D129" />-->
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/caloriecount_background" />
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
 
                             <TextView
-                                android:id="@+id/textViewx"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/cantora_one"
-                                android:text="354"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                android:layout_gravity="center"
+                                android:text="Protein: "
+                                android:textColor="#C8C8C8"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
-                    </androidx.cardview.widget.CardView>
+                        <LinearLayout
+                            android:layout_marginRight="30dp"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+<!--                            <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@drawable/lipidicon"-->
+<!--                                app:tint="#FF5722" />-->
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            <ProgressBar
+                                android:id="@+id/progressBar2"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/tv_total_meters_travel"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Fats: "
+                                android:textColor="#C8C8C8"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="30dp">
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="30dp"-->
+<!--                                android:layout_height="30dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@drawable/carbicon" />-->
+
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/total_calories_gained"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Carbs: 300"
+                                android:textColor="#C8C8C8"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginRight="00dp">
 
                             <ImageView
-                                android:id="@+id/imageView6"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/caloriesicon" />
+
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/total_calories_burned"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/checkmark" />
+                                android:layout_gravity="center"
+                                android:text="1500 cal"
+                                android:textColor="#C8C8C8"
+                                android:textSize="12dp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
 
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="364dp"
+                android:layout_height="275dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:id="@+id/see_exercises"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#E4E4E4"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Recipes"
+                        android:textColor="#777777"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_for_recipes"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="visible" />
+
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_no_exercises"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/basic"
+                        android:gravity="center"
+                        android:text="No Recipe shown! Click Here To Begin." />
+
+
+                </LinearLayout>
+
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorGradientCenter"
-                android:elevation="40dp"
-                app:cardCornerRadius="50dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#FF6044"
 
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
-
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="186dp"
-                        android:layout_height="74dp"
-                        android:layout_marginTop="32dp"
-
-
-                        android:fontFamily="casual"
-                        android:text="Skinny Alfredo"
-                        android:textAlignment="center"
-                        android:textColor="@color/lightGray"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="338dp"
-                        android:layout_height="99dp"
-
-
-                        android:fontFamily="monospace"
-                        android:text="Replaces heavy cream with greek yogurt, putting a healthy twist on tradition. Takes around 30 minutes and gives 4 servings. "
-                        android:textAlignment="inherit"
-                        android:textColor="@color/lightGray"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.1">
-
-                    </TextView>
-
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:srcCompat="@drawable/down_arrow" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ImageView
-                            android:id="@+id/imageView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/alfredo_dish" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="85dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView9"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/caloriecount_background" />
-
-                            <TextView
-                                android:id="@+id/textView3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/cantora_one"
-                                android:text="354"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView10"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/checkmark" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorGradientCenter"
-                android:elevation="40dp"
-                app:cardCornerRadius="50dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#FF6044"
-
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
-
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="186dp"
-                        android:layout_height="74dp"
-                        android:layout_marginTop="32dp"
-
-
-                        android:fontFamily="casual"
-                        android:text="Caprese Zoodles"
-                        android:textAlignment="center"
-                        android:textColor="@color/lightGray"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="338dp"
-                        android:layout_height="99dp"
-
-
-                        android:fontFamily="monospace"
-                        android:text="Zoodles are a healthy, keto-based snack that imitates noodles despite being made from zucchini. Takes just 30 minutes and yields 4 servings."
-                        android:textAlignment="inherit"
-                        android:textColor="@color/lightGray"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.1">
-
-                    </TextView>
-
-                    <ImageView
-                        android:id="@+id/imageView11"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:srcCompat="@drawable/down_arrow" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ImageView
-                            android:id="@+id/imageView12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/zoodle_dish" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="85dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView13"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/caloriecount_background" />
-
-                            <TextView
-                                android:id="@+id/textViewx6"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/cantora_one"
-                                android:text="260"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView14"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/checkmark" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorGradientCenter"
-                android:elevation="40dp"
-                app:cardCornerRadius="50dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#FF6044"
-
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
-
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="186dp"
-                        android:layout_height="74dp"
-                        android:layout_marginTop="32dp"
-
-
-                        android:fontFamily="casual"
-                        android:text="Spring Risotto"
-                        android:textAlignment="center"
-                        android:textColor="@color/lightGray"
-                        android:textSize="25sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="338dp"
-                        android:layout_height="99dp"
-
-
-                        android:fontFamily="monospace"
-                        android:text="Favoring health, Spring Risotto brings multiple food items together for an enjoyable meal. Takes around an hour to prepare and gives 8 servings."
-                        android:textAlignment="inherit"
-                        android:textColor="@color/lightGray"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.1">
-
-                    </TextView>
-
-                    <ImageView
-                        android:id="@+id/imageView15"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:srcCompat="@drawable/down_arrow" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ImageView
-                            android:id="@+id/imageView16"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/risotto_dish" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView6"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="85dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView17"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/caloriecount_background" />
-
-                            <TextView
-                                android:id="@+id/textView9"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/cantora_one"
-                                android:text="238"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView7"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView18"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/checkmark" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorGradientCenter"
-                android:elevation="40dp"
-                app:cardCornerRadius="50dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#FF6044"
-
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
-
-
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="196dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="16dp"
-
-
-                        android:fontFamily="casual"
-                        android:text="Garlic Turkey Stir-Fry"
-                        android:textAlignment="center"
-                        android:textColor="@color/lightGray"
-                        android:textSize="22sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias=".2">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="338dp"
-                        android:layout_height="99dp"
-
-
-                        android:fontFamily="monospace"
-                        android:text="Quick and simple, this recipe combines vegetables and meat to give you a small, tasty dish. Takes around 15 minutes to prepare and gives 4 servings."
-                        android:textAlignment="inherit"
-                        android:textColor="@color/lightGray"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.1">
-
-                    </TextView>
-
-                    <ImageView
-                        android:id="@+id/imageView19"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:srcCompat="@drawable/down_arrow" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ImageView
-                            android:id="@+id/imageView20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/turkey_dish" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView8"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="85dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView21"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/caloriecount_background" />
-
-                            <TextView
-                                android:id="@+id/textView12"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/cantora_one"
-                                android:text="262"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView9"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView22"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/checkmark" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorGradientCenter"
-                android:elevation="40dp"
-                app:cardCornerRadius="50dp"
-                tools:layout_marginTop="40dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#FF6044"
-
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="16dp">
-
-
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="212dp"
-                        android:layout_height="110dp"
-                        android:layout_marginTop="16dp"
-
-
-                        android:fontFamily="casual"
-                        android:text="Cheesy Chicken Cutlets with Ham"
-                        android:textAlignment="center"
-                        android:textColor="@color/lightGray"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.0">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="338dp"
-                        android:layout_height="99dp"
-
-
-                        android:fontFamily="monospace"
-                        android:text="A more straightforward take on Cordon Bleu, this recipe offers a convenient exotic meal. Takes around 30 minutes, giving 4 servings of one cutlet each."
-                        android:textAlignment="inherit"
-                        android:textColor="@color/lightGray"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.1">
-
-                    </TextView>
-
-                    <ImageView
-                        android:id="@+id/imageView23"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="15dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:srcCompat="@drawable/down_arrow" />
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="125dp"
-                        android:layout_height="125dp"
-                        app:cardCornerRadius="50dp">
-
-                        <ImageView
-                            android:id="@+id/imageView24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/cutlets_dish" />
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView10"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="85dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView25"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/caloriecount_background" />
-
-                            <TextView
-                                android:id="@+id/textView15"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="@font/cantora_one"
-                                android:text="266"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView11"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="95dp"
-                        android:layout_marginTop="5dp"
-                        app:cardCornerRadius="20dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:id="@+id/imageView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                app:srcCompat="@drawable/checkmark" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
-
     </ScrollView>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="85dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:gravity="center"
-            android:id="@+id/addFoodTab_diet"
+            android:id="@+id/addFoodTab_move"
             android:layout_width="98dp"
             android:layout_height="72dp"
             android:background="@drawable/center_navigation_bar"
@@ -1052,12 +369,12 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/diet_move"
+                app:layout_constraintEnd_toStartOf="@+id/home_move"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_baseline_today_24"
                     app:tint="@color/lightGray" />
 
@@ -1101,7 +418,7 @@
             app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
-                android:id="@+id/diet_diet"
+                android:id="@+id/exercise_diet"
                 android:layout_width="61dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -1110,7 +427,7 @@
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/diet_profile"
+                app:layout_constraintTop_toTopOf="@+id/exercise_profile"
                 app:layout_constraintVertical_bias="0.0">
 
                 <ImageView
@@ -1129,7 +446,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/diet_diet"
+                app:layout_constraintStart_toEndOf="@+id/exercise_diet"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -1144,4 +461,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
