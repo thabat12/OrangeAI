@@ -15,9 +15,9 @@ import com.example.orangeai.models.ActivityPrograms
 import com.example.orangeai.models.ExerciseHistory
 import com.example.orangeai.models.User
 import com.projemanag.firebase.FirestoreClass
-import kotlinx.android.synthetic.main.activity_perform_exercise.*
-import kotlinx.android.synthetic.main.activity_perform_exercise.exercise_title_perform
-import kotlinx.android.synthetic.main.activity_perform_exercise.fab_start
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.*
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.exercise_title_perform
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.fab_start
 import kotlinx.android.synthetic.main.activity_perform_exercise_reps.*
 import java.text.SimpleDateFormat
 import java.util.*

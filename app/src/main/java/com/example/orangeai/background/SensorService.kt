@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.orangeai.database.MainDatabaseHandler
 import kotlinx.android.synthetic.main.activity_exercise.*
-import kotlinx.android.synthetic.main.activity_perform_exercise.*
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.*
 
 class SensorService : Service() {
 

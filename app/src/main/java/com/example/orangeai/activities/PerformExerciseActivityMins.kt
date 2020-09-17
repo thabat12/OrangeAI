@@ -14,9 +14,9 @@ import com.example.orangeai.models.ActivityPrograms
 import com.example.orangeai.models.ExerciseHistory
 import com.example.orangeai.models.User
 import com.projemanag.firebase.FirestoreClass
-import kotlinx.android.synthetic.main.activity_perform_exercise.*
-import kotlinx.android.synthetic.main.activity_perform_exercise.exercise_title_perform
-import kotlinx.android.synthetic.main.activity_perform_exercise.fab_start
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.*
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.exercise_title_perform
+import kotlinx.android.synthetic.main.activity_perform_exercise_mins.fab_start
 import kotlinx.android.synthetic.main.activity_perform_exercise_reps.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,7 +38,7 @@ class PerformExerciseActivityMins : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perform_exercise)
+        setContentView(R.layout.activity_perform_exercise_mins)
 
         if (intent.hasExtra(ExerciseActivity.EXTRA_EXERCISE_DETAILS)) {
             exerciseDetailModel =
@@ -125,7 +125,7 @@ class PerformExerciseActivityMins : AppCompatActivity() {
             view_timer.stop()
 
 
-            val duration: String = edit_text_mins.text.toString()
+            val duration: String = view_timer.text.toString()
             val exerciseName: String = exerciseDetailModel!!.title
 
             val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
