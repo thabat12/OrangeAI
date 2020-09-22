@@ -103,7 +103,7 @@
                         android:layout_marginBottom="254dp"
                         android:fontFamily="@font/basic"
                         android:paddingLeft="15dp"
-                        android:text="Recently Eaten"
+                        android:text="Summary"
                         android:textColor="@android:color/white"
                         android:textSize="23sp" />
 
