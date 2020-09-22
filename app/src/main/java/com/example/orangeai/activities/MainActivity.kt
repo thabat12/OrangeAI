@@ -66,7 +66,6 @@ class MainActivity : BaseActivity() {
     }
 
     fun getDailyInfo() {
-
         // cal burned, cal gained, water, diet award, exercise award
         val mainDBHandler = MainDatabaseHandler(this)
         val todayDetails = mainDBHandler.getTodayData()

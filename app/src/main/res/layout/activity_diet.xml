@@ -52,39 +52,17 @@
         <!--            app:layout_constraintVertical_bias="0.0" />-->
 
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_color="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.918"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_marginBottom="5dp"
-            app:cardCornerRadius="30dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient8">
-
-
-
-                <ImageView
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="0dp"
-                    android:src="@drawable/orangeai_logo"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -387,26 +365,25 @@
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:gravity="center"
-            android:id="@+id/addFoodTab_move"
+            android:id="@+id/addFoodTab_diet"
             android:layout_width="98dp"
             android:layout_height="72dp"
             android:background="@drawable/center_navigation_bar"
-            android:elevation="5dp"
+            android:elevation="10dp"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout8"
             app:layout_constraintStart_toEndOf="@+id/linearLayout7">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:layout_marginTop="2dp"
                 android:id="@+id/camera_capture_button"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
+                android:layout_marginTop="2dp"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json" />
@@ -420,7 +397,7 @@
             android:layout_width="165dp"
             android:layout_height="60dp"
             android:background="@android:color/white"
-            android:elevation="5dp"
+            android:elevation="10dp"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -438,12 +415,12 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/home_move"
+                app:layout_constraintEnd_toStartOf="@+id/diet_move"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:src="@drawable/ic_baseline_today_24"
                     app:tint="@color/lightGray" />
 
@@ -475,7 +452,7 @@
             android:layout_width="165dp"
             android:layout_height="60dp"
             android:background="@android:color/white"
-            android:elevation="5dp"
+            android:elevation="10dp"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -487,7 +464,7 @@
             app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
-                android:id="@+id/exercise_diet"
+                android:id="@+id/diet_diet"
                 android:layout_width="61dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -495,8 +472,9 @@
 
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/exercise_profile"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/diet_profile"
+                app:layout_constraintVertical_bias="0.0">
 
                 <ImageView
                     android:layout_width="32dp"
@@ -512,10 +490,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:gravity="center"
-
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/exercise_diet"
+                app:layout_constraintStart_toEndOf="@+id/diet_diet"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -525,6 +502,7 @@
                     app:tint="@color/lightGray" />
 
             </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
