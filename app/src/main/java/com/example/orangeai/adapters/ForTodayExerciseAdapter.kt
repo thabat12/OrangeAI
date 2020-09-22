@@ -24,7 +24,6 @@ open class ForTodayExerciseAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        Log.e("list size", list.size.toString())
 
         return MyViewHolder(
             LayoutInflater.from(context).inflate(

@@ -47,6 +47,11 @@ class ProfileSetupActivity : BaseActivity() {
 
     lateinit var userInfoProfileSetup: User
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_setup)

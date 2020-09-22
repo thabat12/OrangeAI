@@ -138,7 +138,7 @@ class PerformExerciseActivityReps : AppCompatActivity() {
                 val caloriesBurned = totalCaloriesToBeBurned
 
 
-                val model = ExerciseHistory(exerciseName, caloriesBurned, duration, currentDate)
+                val model = ExerciseHistory(0, exerciseName, caloriesBurned, duration, currentDate)
 
                 intent = Intent(this@PerformExerciseActivityReps, FinishExercise::class.java)
                 intent.putExtra(EXERCISE_DETAILS_PP, model)

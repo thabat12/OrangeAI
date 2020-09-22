@@ -134,7 +134,7 @@ class PerformExerciseActivityMins : AppCompatActivity() {
             val caloriesBurned = elapsed_time_check.text.toString().toDouble()
 
 
-            val model = ExerciseHistory(exerciseName, caloriesBurned, duration, currentDate)
+            val model = ExerciseHistory(0, exerciseName, caloriesBurned, duration, currentDate)
 
             intent = Intent(this@PerformExerciseActivityMins, FinishExercise::class.java)
             intent.putExtra(PerformExerciseActivityMins.EXERCISE_DETAILS, model)

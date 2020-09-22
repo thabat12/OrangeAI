@@ -8,13 +8,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.airbnb.lottie.animation.content.Content
-import com.example.orangeai.models.FoodNutrients
 import com.example.orangeai.models.Today
 import com.example.orangeai.models.User
 import com.example.orangeai.utils.Constants.DBVERSION
-import com.projemanag.firebase.FirestoreClass
-import java.util.*
 
 class MainDatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -44,6 +40,8 @@ class MainDatabaseHandler(context: Context) :
         private const val COLUMN_ID_MAIN = "_id"
         private const val PROGRAM = "program_name"
         private const val CALORIES_BURNED = "calories_burned"
+        private const val STEP_CAL = "step_cal"
+        private const val PROGRAM_CAL = "program_cal"
         private const val CALORIES_BURNED_GOAL = "calories_burned_goal"
         private const val CALORIES_GAINED = "calories_gained"
         private const val CALORIES_GAINED_GOAL = "calories_gained_goal"
@@ -87,6 +85,8 @@ class MainDatabaseHandler(context: Context) :
                 + COLUMN_ID_MAIN + " INTEGER PRIMARY KEY,"
                 + PROGRAM + " TEXT,"
                 + STEPS_TAKEN + " INTEGER,"
+                + STEP_CAL + " INTEGER,"
+                + PROGRAM_CAL + " INTEGER,"
                 + CALORIES_BURNED + " INTEGER,"
                 + CALORIES_BURNED_GOAL + " INTEGER,"
                 + CALORIES_GAINED + " INTEGER,"
@@ -231,27 +231,53 @@ class MainDatabaseHandler(context: Context) :
     }
 
 
-    fun addStepsTaken(stepsTaken: Int)  {
+    fun addStepsTaken(stepsTaken: Int, totalCalories: Double)  {
         val db = this.writableDatabase
         val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
         val cursor: Cursor = db.rawQuery(selectQuery, null)
-        cursor.moveToLast()
-
-
 
         val totalSteps = stepsTaken
+        val totalStepCalories = totalCalories
 
-
+        // Editing the most recent log
+        cursor.moveToLast()
+        // Fixes the negative calorie bug
+        var TotalCal = cursor.getInt(cursor.getColumnIndex(CALORIES_BURNED))
+        if (TotalCal < 0) {
+            TotalCal = 0
+        }
+        // Merging the total steps with the currently existing program calories
+        val caloriesTotal = totalStepCalories + cursor.getInt(cursor.getColumnIndex(PROGRAM_CAL))
+        // Insert values
         val contentValues = ContentValues()
-        val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))
         contentValues.put(STEPS_TAKEN, totalSteps)
+        contentValues.put(STEP_CAL, totalStepCalories)
+        contentValues.put(CALORIES_BURNED, caloriesTotal)
+        // Find the Index and update the database accordingly
+        val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))
+        db.update(TABLE_MAIN_DATABASE, contentValues, COLUMN_ID_MAIN + "=" + index, null)
 
+        db.close()
 
+    }
+    fun addCaloriesBurnMain(programCal: Int)  {
+        val db = this.writableDatabase
+        val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        // Updating the most latest entry at all times
+        cursor.moveToLast()
+        // Adding summative values to total calories gained via exercise
+        val programCalTotal = cursor.getInt(cursor.getColumnIndex(PROGRAM_CAL)) + programCal
+        // Inserting the values to individual and overall values
+        val contentValues = ContentValues()
+        contentValues.put(PROGRAM_CAL, programCalTotal)
+        contentValues.put(CALORIES_BURNED, programCalTotal + cursor.getInt(cursor.getColumnIndex(STEP_CAL)))
+        // Update the database
+        val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))
         db.update(TABLE_MAIN_DATABASE, contentValues, COLUMN_ID_MAIN + "=" + index, null)
         db.close()
 
     }
-
     @SuppressLint("Recycle")
     fun addCaloriesGainMain(caloriesGain: Int)  {
         val db = this.writableDatabase
@@ -282,27 +308,7 @@ class MainDatabaseHandler(context: Context) :
         db.close()
 
     }
-    fun addCaloriesBurnMain(extraCal: Int)  {
-        val db = this.writableDatabase
-        val selectQuery = "SELECT  * FROM $TABLE_MAIN_DATABASE" // Database select query
-        val cursor: Cursor = db.rawQuery(selectQuery, null)
 
-
-
-        cursor.moveToLast()
-        val previousSteps = cursor.getInt(cursor.getColumnIndex(STEPS_TAKEN)) - 1
-        val stepCal = (cursor.getInt(cursor.getColumnIndex(STEPS_TAKEN)) * 0.04).toInt()
-        val calBurnedTotal = cursor.getInt(cursor.getColumnIndex(CALORIES_BURNED)) - (previousSteps * 0.04).toInt() + stepCal + extraCal
-        val index = cursor.getInt(cursor.getColumnIndex(COLUMN_ID_MAIN))
-
-
-        val contentValues = ContentValues()
-        contentValues.put(CALORIES_BURNED, calBurnedTotal)
-
-        db.update(TABLE_MAIN_DATABASE, contentValues, COLUMN_ID_MAIN + "=" + index, null)
-        db.close()
-
-    }
 
     fun updateGoals(bmr: Double, program: Int, weight: Int) {
         val db = this.writableDatabase

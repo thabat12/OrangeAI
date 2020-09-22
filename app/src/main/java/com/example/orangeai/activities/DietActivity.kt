@@ -1,6 +1,7 @@
 package com.example.orangeai.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,10 +12,18 @@ import com.example.orangeai.models.setRecipes
 import kotlinx.android.synthetic.main.activity_diet.*
 import kotlinx.android.synthetic.main.activity_exercise_list.*
 
+
 class DietActivity : BaseActivity() {
 
     var list = setRecipes(this).createModels()
     var saveList =ArrayList<Recipes>()
+    var proteinNum:Int=0
+    private var carbsNum:Int=0
+    var fatsNum:Int=0
+    var calGain:Int=0
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet)
@@ -35,6 +44,10 @@ class DietActivity : BaseActivity() {
             finish()
         }
 
+        protein.text=proteinNum.toString()
+        fats.text=fatsNum.toString()
+        carbsCount.text=carbsNum.toString()
+        total_calories_gained.text=calGain.toString()
 
     }
 
@@ -52,6 +65,7 @@ class DietActivity : BaseActivity() {
 
 
         rv_for_recipes.layoutManager = LinearLayoutManager(this)
+        rv_for_recipes.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL ,false)
         rv_for_recipes.setHasFixedSize(true)
 
         val rAdapter = RecipeAdapter(this, dataModelsList)
@@ -59,9 +73,16 @@ class DietActivity : BaseActivity() {
 
         rAdapter.setOnClickListener(object : RecipeAdapter.OnClickListener {
             override fun onClick(position: Int, model: Recipes) {
-                save_selection.setVisibility(View.VISIBLE)
-                val newObject = Recipes(dataModelsList[position].id, dataModelsList[position].title, dataModelsList[position].description, dataModelsList[position].calories, dataModelsList[position].img)
-                saveList.add(newObject)
+//                save_selection.setVisibility(View.VISIBLE)
+//                val newObject = Recipes(dataModelsList[position].id, dataModelsList[position].title, dataModelsList[position].description, dataModelsList[position].calories, dataModelsList[position].img)
+//                saveList.add(newObject)
+
+//                var goUrl=Intent(android.content.Intent.ACTION_VIEW)
+//                goUrl.data= Uri.parse("https://developer.android.com/reference/android/app/Activity/")
+
+                var goUrl = Intent(Intent.ACTION_VIEW,Uri.parse(dataModelsList[position].web))
+                startActivity(goUrl)
+
             }
         })
     }

@@ -1,27 +1,17 @@
 package com.example.orangeai.adapters
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.orangeai.R
-import com.example.orangeai.activities.DietActivity
-import com.example.orangeai.activities.MainActivity
-import com.example.orangeai.models.ActivityPrograms
-import com.example.orangeai.models.Recipes
-import kotlinx.android.synthetic.main.activity_splash.view.*
-import kotlinx.android.synthetic.main.rv_for_recipes.view.*
-import kotlinx.android.synthetic.main.rv_programs.view.*
-import kotlin.collections.ArrayList
+import com.example.orangeai.models.ExerciseHistory
+import kotlinx.android.synthetic.main.rv_exercise_history.view.*
 
-
-open class RecipeAdapter(
+open class ExerciseHistoryAdapter(
     private val context: Context,
-    private var list: ArrayList<Recipes>
+    open var list: ArrayList<ExerciseHistory>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     // TODO (Step 5: Add a variable for onClickListener interface.)
@@ -40,7 +30,7 @@ open class RecipeAdapter(
 
         return MyViewHolder(
             LayoutInflater.from(context).inflate(
-                R.layout.rv_for_recipes,
+                R.layout.rv_exercise_history,
                 parent,
                 false
             )
@@ -63,21 +53,17 @@ open class RecipeAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.setSelected(selectedPos == position)
         val model = list[position]
-
+        holder.itemView.exercise_history_name.text = model.exerciseName
+        holder.itemView.exercise_history_details.text = "Duration: ${model.duration}\nDate: ${model.timeOfActivity}"
+        holder.itemView.exercise_history_calories.text = String.format("%.1f", model.caloriesBurned) + " Cal"
 
         if (holder is MyViewHolder) {
-            holder.itemView.Title.text = model.title
-            holder.itemView.Desc.text = model.description
-            holder.itemView.CalText.text = (model.calories).toString()
-            holder.itemView.foodImg.setImageResource(model.img)
-            //holder.itemView.Desc.layout_constraintHorizontal_bias=model.txtSpace
 
 
             holder.itemView.setOnClickListener {
 
                 if (onClickListener != null) {
                     onClickListener!!.onClick(position, model)
-
 
                 }
             }
@@ -106,7 +92,7 @@ open class RecipeAdapter(
     // TODO (Step 4: Create an interface for onclickListener)
     // START
     interface OnClickListener {
-        fun onClick(position: Int, model: Recipes)
+        fun onClick(position: Int, model: ExerciseHistory)
     }
     // END
 

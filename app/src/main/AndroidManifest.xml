@@ -62,7 +62,7 @@
         <activity android:name=".activities.BaseActivity" />
         <activity
             android:name=".activities.ExerciseActivity"
-            
+
             android:screenOrientation="portrait"
             android:theme="@style/noAnimTheme" />
         <activity

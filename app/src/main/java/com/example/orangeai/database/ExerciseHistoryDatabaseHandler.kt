@@ -2,7 +2,9 @@ package com.example.orangeai.database
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.orangeai.models.ExerciseHistory
 import com.example.orangeai.utils.Constants.DBVERSION
@@ -44,6 +46,38 @@ class ExerciseHistoryDatabaseHandler(context: Context) :
 
         db?.execSQL("DROP TABLE IF EXISTS " +  TABLE_EXERCISE_HISTORY) // It drops the existing history table
         onCreate(db)
+    }
+
+    fun getExerciseHistory(): ArrayList<ExerciseHistory> {
+
+        // A list is initialize using the data model class in which we will add the values from cursor.
+        val historyList: ArrayList<ExerciseHistory> = ArrayList()
+
+        val selectQuery = "SELECT  * FROM $TABLE_EXERCISE_HISTORY" // Database select query
+
+        val db = this.readableDatabase
+
+        try {
+            val cursor: Cursor = db.rawQuery(selectQuery, null)
+            if (cursor.moveToFirst()) {
+                do {
+                    val place = ExerciseHistory(
+                        cursor.getInt(cursor.getColumnIndex(COLUMN_ID_EXERCISE)),
+                        cursor.getString(cursor.getColumnIndex(EXERCISE_NAME)),
+                        cursor.getDouble(cursor.getColumnIndex(CALORIES_BURNED)),
+                        cursor.getString(cursor.getColumnIndex(EXERCISE_DURATION)),
+                        cursor.getString(cursor.getColumnIndex(TIME_OF_ACTIVITY))
+                    )
+                    historyList.add(place)
+
+                } while (cursor.moveToNext())
+            }
+            cursor.close()
+        } catch (e: SQLiteException) {
+            db.execSQL(selectQuery)
+            return ArrayList()
+        }
+        return historyList
     }
 
 

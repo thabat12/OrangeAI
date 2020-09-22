@@ -22,13 +22,20 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.orangeai.R
+import com.example.orangeai.adapters.ExerciseHistoryAdapter
 import com.example.orangeai.adapters.ForTodayExerciseAdapter
 import com.example.orangeai.database.ExerciseDatabaseHandler
+import com.example.orangeai.database.ExerciseHistoryDatabaseHandler
 import com.example.orangeai.database.MainDatabaseHandler
 import com.example.orangeai.models.ActivityPrograms
+import com.example.orangeai.models.ExerciseHistory
 import com.example.orangeai.utils.PrefUtil
 import com.example.orangeai.utils.SwipeToDeleteCallback
 import kotlinx.android.synthetic.main.activity_exercise.*
+import kotlinx.android.synthetic.main.activity_exercise.addFoodTab_move
+import kotlinx.android.synthetic.main.activity_exercise.exercise_diet
+import kotlinx.android.synthetic.main.activity_exercise.exercise_home
+import kotlinx.android.synthetic.main.activity_exercise.exercise_profile
 import java.util.*
 
 open class ExerciseActivity : BaseActivity() , SensorEventListener {
@@ -121,6 +128,7 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
         supportActionBar?.setIcon(R.drawable.ic_timer)
         supportActionBar?.title = "      Timer"
         getExerciseTodoListFromLocalDB()
+        getExerciseHistoryFromLocalDB()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -150,6 +158,33 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
             pls_add_bithc.visibility = View.VISIBLE
         }
     }
+
+    fun getExerciseHistoryFromLocalDB() {
+        val dbHandler = ExerciseHistoryDatabaseHandler(this)
+        val getHistory = dbHandler.getExerciseHistory()
+        if (getHistory.size > 0) {
+            setupHistoryExerciseList(getHistory)
+        } else {
+
+        }
+    }
+
+    fun setupHistoryExerciseList(exerciseHistoryList: ArrayList<ExerciseHistory>) {
+        rv_today_history.layoutManager = LinearLayoutManager(this)
+        rv_today_history.setHasFixedSize(true)
+
+        val historyAdapter = ExerciseHistoryAdapter(this, exerciseHistoryList)
+        rv_today_history.adapter = historyAdapter
+
+        historyAdapter.setOnClickListener(object :
+            ExerciseHistoryAdapter.OnClickListener {
+            override fun onClick(position: Int, model: ExerciseHistory) {
+            }
+
+        })
+
+    }
+
 
     fun setupExerciseTodoListRecyclerView(exerciseTodoList: ArrayList<ActivityPrograms>) {
         rv_for_today_exercises.layoutManager = LinearLayoutManager(this)
@@ -219,7 +254,7 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
             totalSteps = p0!!.values[0]
             val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
             val dbHandler = MainDatabaseHandler(this)
-            dbHandler.addStepsTaken(currentSteps)
+
             dbHandler.addCaloriesBurnMain(0)
             tv_stepsTaken.text = ("$currentSteps")
             var totalCaloriesBurned: Double = currentSteps * 0.04
@@ -232,6 +267,10 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
             progress_circular.apply {
                 setProgressWithAnimation(currentSteps.toFloat())
             }
+
+            Log.e("Steps", "previous: $previousTotalSteps current: $totalSteps")
+
+            dbHandler.addStepsTaken(currentSteps, totalCaloriesBurned)
         }
     }
 

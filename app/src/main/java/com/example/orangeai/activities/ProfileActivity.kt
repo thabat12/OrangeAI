@@ -76,12 +76,8 @@ class ProfileActivity : BaseActivity() {
             startActivity(intent)
             //finish()
         }
-        log_out_profile.setOnClickListener {
-//            FirebaseAuth.getInstance().signOut()
-//            intent = Intent(this, IntroActivity::class.java)
-//            startActivity(intent)
+        btn_change_profile.setOnClickListener {
             startActivity(Intent(this, ProfileSetupActivity::class.java))
-            finish()
         }
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
@@ -106,9 +102,11 @@ class ProfileActivity : BaseActivity() {
                 )
             }
         }
-        //log_out_profile.setOnClickListener {
-        //    signOutFirebase()
-        //}
+        log_out_profile.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            intent = Intent(this, IntroActivity::class.java)
+            startActivity(intent)
+        }
         val TAG = javaClass.simpleName
         pFireStore.collection(Constants.USERS)
             .document(getCurrentUserID())
