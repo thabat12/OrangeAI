@@ -17,7 +17,7 @@
         android:background="#FFFFFF"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:gravity="left"
         android:paddingTop="20dp">
 
@@ -107,19 +107,59 @@
                         android:textColor="@android:color/white"
                         android:textSize="23sp" />
 
+                    <TextView
+                        android:layout_marginBottom="90dp"
+                        android:id="@+id/tv_calories_gained"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/relative_thing"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="-2dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="10"
+                        android:textColor="@android:color/white"
+                        android:textSize="35sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_calories_goal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginEnd="-2dp"
+                        android:layout_marginBottom="140dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:text="Meals"
+                        android:textColor="@android:color/primary_text_dark_nodisable"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginTop="60dp"
-                        android:layout_marginBottom="84dp"
+                        android:layout_marginBottom="108dp"
                         android:gravity="center">
 
-
-
-
+                        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                            android:id="@+id/progress_circular_diet"
+                            android:layout_width="wrap_content"
+                            android:layout_height="159dp"
+                            app:cpb_background_progressbar_color="#fffff0"
+                            app:cpb_background_progressbar_width="10dp"
+                            app:cpb_progress_direction="to_right"
+                            app:cpb_progress_max="2500"
+                            app:cpb_progressbar_color="#FF4628"
+                            app:cpb_progressbar_width="10dp"
+                            app:cpb_round_border="true" />
                     </LinearLayout>
 
 
@@ -136,6 +176,7 @@
                         android:visibility="invisible" />
 
                     <LinearLayout
+                        android:id="@+id/relative_thing"
                         android:layout_width="match_parent"
                         android:layout_height="85dp"
                         android:layout_alignParentBottom="true"
@@ -269,40 +310,28 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-
-
-
             <androidx.cardview.widget.CardView
+                android:layout_marginBottom="20dp"
                 android:layout_width="364dp"
-                android:layout_height="275dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="0dp">
+                app:cardCornerRadius="9dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
-                    android:id="@+id/see_exercises"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#E4E4E4"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:paddingLeft="16dp"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/arrow_white"
-                            android:layout_marginEnd="50dp"
-                            android:rotation="180">
-
-                        </ImageView>
 
                         <TextView
                             android:layout_marginLeft="0dp"
@@ -312,19 +341,111 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Recipes"
-                            android:textColor="#777777"
-                            android:textSize="24dp"
-                            android:textStyle="bold" />
+                            android:text="Recent"
+                            android:textColor="@color/somewhat_black"
+                            android:textSize="24dp" />
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="28dp"
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_food_history_thing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                tools:itemCount="3"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="10dp"
+                android:layout_width="364dp"
+                android:layout_height="275dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:paddingLeft="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="left"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
                             android:layout_gravity="center"
-                            android:layout_marginStart="50dp"
-                            android:src="@drawable/arrow_white">
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Recent"
+                            android:textColor="@color/somewhat_black"
+                            android:textSize="24dp" />
 
-                        </ImageView>
+
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginBottom="50dp"
+                android:layout_width="364dp"
+                android:layout_height="275dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:id="@+id/see_exercises"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:paddingLeft="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="left"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Recipes"
+                            android:textColor="@color/somewhat_black"
+                            android:textSize="24dp" />
 
 
                     </LinearLayout>

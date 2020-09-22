@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.orangeai.R
+import com.example.orangeai.adapters.FoodImageAdapter
 import com.example.orangeai.adapters.RecipeAdapter
+import com.example.orangeai.database.DietDatabaseHandler
+import com.example.orangeai.models.FoodImages
 import com.example.orangeai.models.Recipes
 import com.example.orangeai.models.setRecipes
 import kotlinx.android.synthetic.main.activity_diet.*
@@ -59,6 +62,10 @@ class DietActivity : BaseActivity() {
         val dataGetter = setRecipes(this)
         val dataModelsList = dataGetter.createModels()
         setUpRecipesRecyclerView(dataModelsList)
+
+        val anotherGetter = DietDatabaseHandler(this)
+        val anotherDataModelsList = anotherGetter.getFoodData()
+        setUpFoodImageRecyclerView(anotherDataModelsList)
     }
 
     private fun setUpRecipesRecyclerView(dataModelsList: ArrayList<Recipes>) {
@@ -83,6 +90,22 @@ class DietActivity : BaseActivity() {
                 var goUrl = Intent(Intent.ACTION_VIEW,Uri.parse(dataModelsList[position].web))
                 startActivity(goUrl)
 
+            }
+        })
+    }
+
+    private fun setUpFoodImageRecyclerView(dataModelsList: ArrayList<FoodImages>) {
+
+
+        rv_food_history_thing.layoutManager = LinearLayoutManager(this)
+        rv_food_history_thing.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,true)
+        rv_food_history_thing.setHasFixedSize(true)
+
+        val rAdapter = FoodImageAdapter(this, dataModelsList)
+        rv_food_history_thing.adapter = rAdapter
+
+        rAdapter.setOnClickListener(object : FoodImageAdapter.OnClickListener {
+            override fun onClick(position: Int, model: FoodImages) {
             }
         })
     }

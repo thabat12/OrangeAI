@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.example.orangeai.models.ActivityPrograms
+import com.example.orangeai.models.FoodImages
 import com.example.orangeai.models.FoodNutrients
 import com.example.orangeai.utils.Constants.DBVERSION
 
@@ -83,6 +84,26 @@ class DietDatabaseHandler(context: Context) :
         }
         db.close()
         return result
+    }
+
+    fun getFoodData() : ArrayList<FoodImages> {
+        val db = this.writableDatabase
+        val selectQuery = "SELECT  * FROM $TABLE_DIET_HISTORY"
+
+        var something: ArrayList<FoodImages> = ArrayList()
+
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        while (cursor.moveToNext()) {
+            val foodName = cursor.getString(cursor.getColumnIndex(FOOD_NAME))
+            val foodCalories = cursor.getInt(cursor.getColumnIndex(FOOD_CALORIES))
+            val foodDate = cursor.getString(cursor.getColumnIndex(FOOD_DATE))
+            val foodImageUri = cursor.getString(cursor.getColumnIndex(FOOD_IMAGE_URI))
+
+            val somethingModel = FoodImages(foodName, foodCalories, foodDate, foodImageUri)
+            something.add(somethingModel)
+        }
+
+        return something
     }
     /*
     *
