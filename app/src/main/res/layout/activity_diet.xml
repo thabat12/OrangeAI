@@ -74,6 +74,8 @@
 
 
         <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             android:orientation="vertical"
@@ -82,19 +84,18 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:layout_width="367dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="22dp"
                 app:cardCornerRadius="9dp">
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/edit_profile_btn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:background="@drawable/gradient4">
-
+                    android:background="@drawable/gradient_diet">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -105,75 +106,87 @@
                         android:paddingLeft="15dp"
                         android:text="Summary"
                         android:textColor="@android:color/white"
-                        android:textSize="23sp" />
+                        android:textSize="23sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/relative_thing"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                    <TextView
-                        android:layout_marginBottom="90dp"
-                        android:id="@+id/tv_calories_gained"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@+id/relative_thing"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginEnd="-2dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:gravity="center"
-                        android:text="10"
-                        android:textColor="@android:color/white"
-                        android:textSize="35sp"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tv_calories_goal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginEnd="-2dp"
-                        android:layout_marginBottom="140dp"
-                        android:fontFamily="@font/roboto_medium"
-                        android:gravity="center"
-                        android:text="Meals"
-                        android:textColor="@android:color/primary_text_dark_nodisable"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/progress_circular_diet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="109dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="72dp"
+                        app:cpb_background_progressbar_color="#fffff0"
+                        app:cpb_background_progressbar_width="10dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progress_max="100"
+                        app:cpb_progressbar_color="#FF4628"
+                        app:cpb_progressbar_width="10dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:id="@+id/linearLayout16"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="108dp"
-                        android:gravity="center">
+                        android:layout_marginStart="24dp"
+                        android:layout_marginBottom="4dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/progress_circular_diet"
+                        app:layout_constraintStart_toEndOf="@+id/progress_circular_diet">
 
-                        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                            android:id="@+id/progress_circular_diet"
+                        <TextView
+                            android:id="@+id/calories_consumed"
                             android:layout_width="wrap_content"
-                            android:layout_height="159dp"
-                            app:cpb_background_progressbar_color="#fffff0"
-                            app:cpb_background_progressbar_width="10dp"
-                            app:cpb_progress_direction="to_right"
-                            app:cpb_progress_max="2500"
-                            app:cpb_progressbar_color="#FF4628"
-                            app:cpb_progressbar_width="10dp"
-                            app:cpb_round_border="true" />
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="608"
+                            android:textColor="@color/white"
+                            android:textSize="35dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="calories\nCONSUMED"
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout16"
+                        app:layout_constraintStart_toEndOf="@+id/linearLayout16"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout16"
+                        app:layout_constraintVertical_bias="0.0">
 
+                        <TextView
+                            android:id="@+id/calories_remaining"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="1508"
+                            android:textColor="@color/white"
+                            android:textSize="35dp" />
 
-
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="12dp"
-                        android:src="@drawable/arrow_white"
-                        android:visibility="invisible" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="center"
+                            android:text="calories\nREMAINING"
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/relative_thing"
@@ -184,278 +197,261 @@
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:paddingLeft="10dp"
-                        android:paddingRight="10dp">
+                        android:paddingRight="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent">
 
                         <LinearLayout
-                            android:layout_width="60dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginRight="30dp">
-
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/proteinicon"
-                                app:tint="#26D129" />
-
-                            <ProgressBar
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:id="@+id/protein"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="Protein: "
-                                android:textColor="#C8C8C8"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal">
+                                <LinearLayout
+                                    android:gravity="center_horizontal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:src="@drawable/ic_dot"
+                                        android:layout_marginRight="5dp"
+                                        app:tint="#2067F3" />
+                                    <TextView
+                                        android:layout_marginRight="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Proteins"/>
 
-                        <LinearLayout
-                            android:layout_marginRight="30dp"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                                </LinearLayout>
+                                <ProgressBar
+                                    android:id="@+id/progress_proteins"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="80dp"
+                                    android:layout_height="wrap_content" />
 
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/lipidicon"
-                                app:tint="#FF5722" />
+                            </LinearLayout>
 
-                            <ProgressBar
-                                android:id="@+id/progressBar2"
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:id="@+id/fats"
+                            <LinearLayout
+                                android:layout_marginLeft="18dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="Fats: "
-                                android:textColor="#C8C8C8"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal">
+                                <LinearLayout
+                                    android:gravity="center_horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:src="@drawable/ic_dot"
+                                        android:layout_marginRight="5dp"
+                                        app:tint="#F32020"/>
+                                    <TextView
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Carbs"/>
 
-                        <LinearLayout
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginRight="30dp">
+                                </LinearLayout>
+                                <ProgressBar
+                                    android:id="@+id/progress_carbs"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="80dp"
+                                    android:layout_height="wrap_content" />
 
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/carbicon" />
+                            </LinearLayout>
 
-
-                            <ProgressBar
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
-
-                            <TextView
-                                android:id="@+id/carbsCount"
+                            <LinearLayout
+                                android:layout_marginLeft="18dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="Carbs: 300"
-                                android:textColor="#C8C8C8"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
+                                android:orientation="vertical"
+                                android:gravity="center_horizontal">
+                                <LinearLayout
+                                    android:gravity="center_horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_width="15dp"
+                                        android:layout_height="15dp"
+                                        android:src="@drawable/ic_dot"
+                                        android:layout_marginRight="5dp"
+                                        app:tint="#F37420"/>
+                                    <TextView
+                                        android:layout_marginRight="5dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Lipids"/>
 
-                        <LinearLayout
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginRight="00dp">
+                                </LinearLayout>
+                                <ProgressBar
+                                    android:id="@+id/progress_lipids"
+                                    style="?android:attr/progressBarStyleHorizontal"
+                                    android:layout_width="80dp"
+                                    android:layout_height="wrap_content" />
 
-                            <ImageView
-                                android:layout_width="30dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/caloriesicon" />
+                            </LinearLayout>
 
 
-                            <ProgressBar
-                                style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
 
-                            <TextView
-                                android:id="@+id/total_calories_gained"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="1500 cal"
-                                android:textColor="#C8C8C8"
-                                android:textSize="12dp"
-                                android:textStyle="bold" />
+
                         </LinearLayout>
 
 
                     </LinearLayout>
 
 
-                </RelativeLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:layout_width="364dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                app:cardCornerRadius="9dp"
+                android:layout_marginTop="30dp"
+                app:cardCornerRadius="15dp"
                 app:cardElevation="2dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:paddingLeft="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:gravity="left"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_gravity="center"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:text="Recent"
-                            android:textColor="@color/somewhat_black"
-                            android:textSize="24dp" />
-
-
-                    </LinearLayout>
-
-
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_food_history_thing"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                tools:itemCount="3"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginBottom="10dp"
-                android:layout_width="364dp"
-                android:layout_height="275dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
-
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
+                    android:background="@drawable/gradient_orange"
                     android:gravity="center"
+                    android:minHeight="340dp"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:paddingLeft="16dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout4"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="70dp"
                         android:gravity="left"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_gravity="center"
+                            android:id="@+id/textView8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="12dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Recent"
+                            android:text="History"
+                            android:textColor="@color/white"
+                            android:textSize="29dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_goneMarginBottom="10dp" />
+
+                        <Button
+                            android:id="@+id/see_all_food_pics"
+                            android:layout_width="70dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/button_white_round"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="See All"
+                            android:textAllCaps="false"
                             android:textColor="@color/somewhat_black"
-                            android:textSize="24dp" />
+                            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView8"
+                            app:layout_constraintVertical_bias="0.555" />
 
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_food_history_thing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+                        tools:itemCount="3" />
 
 
 
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>
-
-
-
 
             <androidx.cardview.widget.CardView
                 android:layout_marginBottom="50dp"
                 android:layout_width="364dp"
-                android:layout_height="275dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="25dp"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="2dp">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/see_exercises"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white"
+                    android:minHeight="340dp"
+                    android:background="@drawable/gradient_recipies"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:paddingLeft="16dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout3"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="90dp"
                         android:gravity="left"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="5dp"
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginBottom="36dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Recipes"
+                            android:textColor="@color/white"
+                            android:textSize="29dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_goneMarginBottom="10dp" />
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Recipes"
-                            android:textColor="@color/somewhat_black"
-                            android:textSize="24dp" />
+                            android:text="Check out these new recipies!"
+                            android:textColor="@color/white"
+                            android:textSize="15dp"
+                            app:layout_constraintStart_toStartOf="@+id/textView5"
+                            app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_for_recipes"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:visibility="visible"
-                        app:spanCount="1"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 
 
@@ -469,7 +465,7 @@
                         android:text="No Recipe shown! Click Here To Begin." />
 
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>

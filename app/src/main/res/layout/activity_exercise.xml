@@ -107,7 +107,7 @@
                             app:cpb_background_progressbar_color="#fffff0"
                             app:cpb_background_progressbar_width="10dp"
                             app:cpb_progress_direction="to_right"
-                            app:cpb_progress_max="2500"
+                            app:cpb_progress_max="8000"
                             app:cpb_progressbar_color="#FF4628"
                             app:cpb_progressbar_width="10dp"
                             app:cpb_round_border="true" />
@@ -180,15 +180,17 @@
                                 app:tint="#26D129" />
 
                             <ProgressBar
+                                android:id="@+id/progress_todo"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
 
                             <TextView
+                                android:id="@+id/todo_text"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="4 todo"
+                                android:text="0 done"
                                 android:textColor="#C8C8C8"
                                 android:textSize="17dp"
                                 android:textStyle="bold" />
@@ -208,7 +210,7 @@
                                 app:tint="#FF5722" />
 
                             <ProgressBar
-                                android:id="@+id/progressBar2"
+                                android:id="@+id/progress_miles"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
@@ -218,7 +220,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="3.2 mi"
+                                android:text="0 mi"
                                 android:textColor="#C8C8C8"
                                 android:textSize="17dp"
                                 android:textStyle="bold" />
@@ -237,6 +239,7 @@
 
 
                             <ProgressBar
+                                android:id="@+id/progress_cal"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
@@ -246,7 +249,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:text="1500 cal"
+                                android:text="0 cal"
                                 android:textColor="#C8C8C8"
                                 android:textSize="17dp"
                                 android:textStyle="bold" />

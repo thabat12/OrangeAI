@@ -11,6 +11,9 @@ import com.example.orangeai.models.ActivityPrograms
 import com.example.orangeai.models.FoodImages
 import com.example.orangeai.models.FoodNutrients
 import com.example.orangeai.utils.Constants.DBVERSION
+import java.util.*
+import kotlin.collections.ArrayList
+import java.util.*;
 
 class DietDatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -104,6 +107,37 @@ class DietDatabaseHandler(context: Context) :
         }
 
         return something
+    }
+    fun getTodayMacroNutrientData(dateCheck: String) : String {
+        val db = this.writableDatabase
+        val selectQuery = "SELECT  * FROM $TABLE_DIET_HISTORY"
+
+        var carbs = 0.0
+        var proteins = 0.0
+        var lipids = 0.0
+
+
+        var something = IntArray(3)
+
+        val cursor: Cursor = db.rawQuery(selectQuery, null)
+        while (cursor.moveToNext()) {
+            val foodDate = cursor.getString(cursor.getColumnIndex(FOOD_DATE))
+            val foodDateScanner: Scanner = Scanner(foodDate)
+            val foodDateComparison = foodDateScanner.next()
+            if (dateCheck.equals(foodDateComparison)) {
+                val foodProteins = cursor.getDouble(cursor.getColumnIndex(FOOD_PROTEINS))
+                val foodCarbs = cursor.getDouble(cursor.getColumnIndex(FOOD_CARBS))
+                val foodLipids = cursor.getDouble(cursor.getColumnIndex(FOOD_LIPIDS))
+                Log.e("SAVING TO DIETDB" , "$foodProteins")
+                proteins += foodProteins
+                carbs += foodCarbs
+                lipids += foodLipids
+            }
+        }
+        something.set(0, proteins.toInt())
+        something.set(1, proteins.toInt())
+        something.set(2, proteins.toInt())
+        return "$proteins $carbs $lipids"
     }
     /*
     *

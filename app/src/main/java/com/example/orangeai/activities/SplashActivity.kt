@@ -19,6 +19,7 @@ import com.example.orangeai.utils.Constants
 import com.google.firebase.firestore.FirebaseFirestore
 import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_profile_setup.*
+import java.lang.NullPointerException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,63 +31,68 @@ class SplashActivity : BaseActivity() {
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        try{
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_splash)
 
 
 
 
-        val currentTime = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault())
-            .format(Date())
-        val dbHandlerMain = MainDatabaseHandler(this)
+            val currentTime = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault())
+                .format(Date())
+            val dbHandlerMain = MainDatabaseHandler(this)
 
-        sFireStore.collection(Constants.USERS)
-            .document(getCurrentUserID())
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e("Setting it all up!", document.toString())
+            sFireStore.collection(Constants.USERS)
+                .document(getCurrentUserID())
+                .get()
+                .addOnSuccessListener { document ->
+                    Log.e("Setting it all up!", document.toString())
 
-                // Here we have received the document snapshot which is converted into the User Data model object.
-                firestoreContents = document.toObject(User::class.java)!!
-                dbHandlerMain.initializeDatabase(currentTime, firestoreContents)
+                    // Here we have received the document snapshot which is converted into the User Data model object.
+                    firestoreContents = document.toObject(User::class.java)!!
+                    dbHandlerMain.initializeDatabase(currentTime, firestoreContents)
 
-            }
-            .addOnFailureListener { e ->
-                // END
-                Log.e(
-                    "oops!", "Error while getting loggedIn user details", e)
-            }
-
-
-
-
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
-            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
-        )
-        Handler(Looper.getMainLooper()).postDelayed({
+                }
+                .addOnFailureListener { e ->
+                    // END
+                    Log.e(
+                        "oops!", "Error while getting loggedIn user details", e)
+                }
 
 
 
-            val currentUserID = FirestoreClass().getCurrentUserID()
-            if (currentUserID.isNotEmpty()) {
-                // Start the Main Activity
-                FirestoreClass().signInUser(this@SplashActivity)
-//
-//                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
 
-            } else {
-                // Start the Intro Activity
-                startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
-            }
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+            )
+            Handler(Looper.getMainLooper()).postDelayed({
 
 
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            ) // Call this when your activity is done and should be closed.
-        }, 2500)
+
+                val currentUserID = FirestoreClass().getCurrentUserID()
+                if (currentUserID.isNotEmpty()) {
+                    // Start the Main Activity
+                    FirestoreClass().signInUser(this@SplashActivity)
+                    //
+                    //                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+
+                } else {
+                    // Start the Intro Activity
+                    startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+                }
+
+
+                overridePendingTransition(
+                    R.anim.slide_in_right,
+                    R.anim.slide_out_left
+                ) // Call this when your activity is done and should be closed.
+            }, 2500)
+        }catch (e: NullPointerException)
+        {
+            startActivity(Intent(this@SplashActivity, IntroActivity::class.java))
+        }
 
 
     }

@@ -3,17 +3,22 @@ package com.example.orangeai.activities
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.orangeai.R
 import com.example.orangeai.adapters.FoodImageAdapter
 import com.example.orangeai.adapters.RecipeAdapter
 import com.example.orangeai.database.DietDatabaseHandler
+import com.example.orangeai.database.MainDatabaseHandler
 import com.example.orangeai.models.FoodImages
 import com.example.orangeai.models.Recipes
 import com.example.orangeai.models.setRecipes
 import kotlinx.android.synthetic.main.activity_diet.*
 import kotlinx.android.synthetic.main.activity_exercise_list.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DietActivity : BaseActivity() {
@@ -47,10 +52,10 @@ class DietActivity : BaseActivity() {
             finish()
         }
 
-        protein.text=proteinNum.toString()
-        fats.text=fatsNum.toString()
-        carbsCount.text=carbsNum.toString()
-        total_calories_gained.text=calGain.toString()
+//        protein.text=proteinNum.toString()
+//        fats.text=fatsNum.toString()
+//        carbsCount.text=carbsNum.toString()
+//        total_calories_gained.text=calGain.toString()
 
     }
 
@@ -63,9 +68,56 @@ class DietActivity : BaseActivity() {
         val dataModelsList = dataGetter.createModels()
         setUpRecipesRecyclerView(dataModelsList)
 
+        try {
+            val dietGetter = DietDatabaseHandler(this)
+            val anotherDataModelsList = dietGetter.getFoodData()
+            val actualModelRecents = modelPreprocessing(anotherDataModelsList)
+            setUpFoodImageRecyclerView(actualModelRecents)
+        } catch (e: Exception) {
+            rv_food_history_thing.visibility = View.GONE
+        }
+
+        // im just going to set all the readable data over here
+        val dataMainGetter = MainDatabaseHandler(this)
+        val goalsArray = dataMainGetter.getTodayData()
+
+        progress_circular_diet.progress = ( (goalsArray.caloriesGained).toDouble() / (goalsArray.caloriesGainGoal).toDouble() * 100 ).toFloat()
+        calories_consumed.text = goalsArray.caloriesGained.toString()
+        calories_remaining.text = (goalsArray.caloriesGainGoal - goalsArray.caloriesGained).toString()
+        // time to calculate the proteins fat and etc
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
+        // get the string of today's date
+        val dateScanner: Scanner = Scanner(currentDate)
+        val dateString = dateScanner.next()
         val anotherGetter = DietDatabaseHandler(this)
-        val anotherDataModelsList = anotherGetter.getFoodData()
-        setUpFoodImageRecyclerView(anotherDataModelsList)
+
+        val arrayOfInts = anotherGetter.getTodayMacroNutrientData(dateString)
+        // proteins, carbs, lipids: order of this array
+
+        progress_proteins.progress = ((arrayOfInts.get(0).toDouble()) / 112 * 100).toInt()
+        progress_carbs.progress = ((arrayOfInts.get(1).toDouble()) / 150 * 100).toInt()
+        progress_lipids.progress = ((arrayOfInts.get(2).toDouble()) / 50 * 100).toInt()
+        Log.e("arrayOfInts", arrayOfInts)
+        // cool everything is set now
+
+
+    }
+    fun modelPreprocessing(model: ArrayList<FoodImages>) : ArrayList<FoodImages> {
+        val size = model.size
+        if (size < 3) {
+            return model
+        } else
+        {
+            val modelRecents: ArrayList<FoodImages> = ArrayList()
+            val indexLast = size - 1
+            for (i in 0 until 3) {
+                val addModel = model[indexLast - i]
+                modelRecents.add(addModel)
+            }
+            return modelRecents
+        }
+
     }
 
     private fun setUpRecipesRecyclerView(dataModelsList: ArrayList<Recipes>) {
@@ -98,7 +150,6 @@ class DietActivity : BaseActivity() {
 
 
         rv_food_history_thing.layoutManager = LinearLayoutManager(this)
-        rv_food_history_thing.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL ,true)
         rv_food_history_thing.setHasFixedSize(true)
 
         val rAdapter = FoodImageAdapter(this, dataModelsList)

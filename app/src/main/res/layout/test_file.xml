@@ -73,41 +73,81 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="10dp">
+                app:cardElevation="2dp">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/see_exercises"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="match_parent"
+                    android:minHeight="340dp"
+                    android:background="@drawable/gradient_orange"
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:paddingLeft="16dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout3"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="70dp"
                         android:gravity="left"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="16dp"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginBottom="5dp"
-                            android:layout_gravity="center"
+                            android:id="@+id/textView5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginBottom="12dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Recent"
+                            android:text="History"
+                            android:textColor="@color/white"
+                            android:textSize="29dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_goneMarginBottom="10dp" />
+
+                        <Button
+                            android:id="@+id/see_all_food_pics"
+                            android:layout_width="70dp"
+                            android:layout_height="30dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/button_white_round"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="See All"
+                            android:textAllCaps="false"
                             android:textColor="@color/somewhat_black"
-                            android:textSize="24dp" />
+                            app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textView5"
+                            app:layout_constraintVertical_bias="0.555" />
 
 
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_food_history_thing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+                        tools:itemCount="3" />
 
 
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_no_exercises"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/basic"
+                        android:gravity="center"
+                        android:text="No Recipe shown! Click Here To Begin." />
 
-                </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </androidx.cardview.widget.CardView>

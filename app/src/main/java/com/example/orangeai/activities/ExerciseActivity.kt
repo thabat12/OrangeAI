@@ -66,6 +66,7 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
 
     private var sensorManager: SensorManager? = null
 
+    var todoSize = 0
     private var running = false
     private var totalSteps = 0f
     private var previousTotalSteps = 0f
@@ -164,6 +165,7 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
         val getHistory = dbHandler.getExerciseHistory()
         if (getHistory.size > 0) {
             setupHistoryExerciseList(getHistory)
+            todoSize = getHistory.size
         } else {
 
         }
@@ -250,6 +252,7 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
 
     @SuppressLint("SetTextI18n")
     override fun onSensorChanged(p0: SensorEvent?) {
+
         if (running) {
             totalSteps = p0!!.values[0]
             val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
@@ -258,19 +261,29 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
             dbHandler.addCaloriesBurnMain(0)
             tv_stepsTaken.text = ("$currentSteps")
             var totalCaloriesBurned: Double = currentSteps * 0.04
-            var totalMetersTravel: Double = currentSteps * 0.73452304883
-            var totalMetersTravelString = "%.1f".format(totalMetersTravel)
-            var totalCaloriesBurnedString = "%.1f".format(totalCaloriesBurned)
-            total_calories_burned.text = totalCaloriesBurnedString + " cal"
-            tv_total_meters_travel.text = totalMetersTravelString + " m"
+            var totalMilesTraveled: Double = currentSteps * (1.0/2000)
+
 
             progress_circular.apply {
                 setProgressWithAnimation(currentSteps.toFloat())
             }
 
-            Log.e("Steps", "previous: $previousTotalSteps current: $totalSteps")
+
 
             dbHandler.addStepsTaken(currentSteps, totalCaloriesBurned)
+            val mainDBHandler = MainDatabaseHandler(this)
+            val todayDetails = mainDBHandler.getTodayData()
+            var totalProportion = ((todayDetails.caloriesBurned.toDouble() /
+                    todayDetails.caloriesBurnGoal.toDouble()) * 100).toInt()
+            progress_cal.progress = totalProportion
+
+            var totalMetersTravelString = "%.1f".format(totalMilesTraveled) + " mi"
+            var totalCaloriesBurnedString = todayDetails.caloriesBurned.toString()
+            total_calories_burned.text = totalCaloriesBurnedString + " cal"
+            progress_miles.progress = ((totalMilesTraveled / 5) * 100).toInt()
+            progress_todo.progress = ( (todoSize.toDouble() / 5) * 100).toInt()
+            todo_text.text = "$todoSize done"
+
         }
     }
 
