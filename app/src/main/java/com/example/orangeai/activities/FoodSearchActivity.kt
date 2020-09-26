@@ -22,6 +22,7 @@ class FoodSearchActivity : AppCompatActivity() {
     }
 
     val API_KEY = "pq6g1TEWAUPdOLP1awmPpGfoTFJbpidQrRFhjSH1"
+    val ANOTHER_API_KEY = "9ugJbIYN9Z99dH8lu87GWPvqp9Ucaa92IVas1exq"
     var foodSearchText = ""
     var passInList: ArrayList<FoodNutrients> = ArrayList()
 
@@ -52,6 +53,7 @@ class FoodSearchActivity : AppCompatActivity() {
             var response:String?
             try{
                 //https://api.nal.usda.gov/fdc/v1/foods/search?api_key=pq6g1TEWAUPdOLP1awmPpGfoTFJbpidQrRFhjSH1&query=Orange
+                // https://api.nal.usda.gov/fdc/v1/foods/search?api_key=9ugJbIYN9Z99dH8lu87GWPvqp9Ucaa92IVas1exq&query=Orange
                 //    %20
                 response = URL("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=$API_KEY&query=$foodSearchText")
                     .readText(

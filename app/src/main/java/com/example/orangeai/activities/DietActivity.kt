@@ -15,6 +15,7 @@ import com.example.orangeai.models.FoodImages
 import com.example.orangeai.models.Recipes
 import com.example.orangeai.models.setRecipes
 import kotlinx.android.synthetic.main.activity_diet.*
+import kotlinx.android.synthetic.main.activity_exercise.*
 import kotlinx.android.synthetic.main.activity_exercise_list.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -50,6 +51,11 @@ class DietActivity : BaseActivity() {
             intent = Intent(this@DietActivity, ProfileActivity::class.java)
             startActivity(intent)
             finish()
+        }
+        addFoodTab_diet.setOnClickListener {
+            intent = Intent(this@DietActivity, AddFoodActivity::class.java)
+            startActivity(intent)
+            //finish()
         }
 
 //        protein.text=proteinNum.toString()

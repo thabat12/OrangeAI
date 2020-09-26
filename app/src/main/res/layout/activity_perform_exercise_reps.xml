@@ -133,7 +133,7 @@
         android:text="Begin The exercise!"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -179,7 +179,7 @@
         android:layout_height="80dp"
         android:layout_marginBottom="316dp"
         android:src="@drawable/caloriesicon"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.311"
@@ -187,7 +187,7 @@
         app:tint="@color/colorGradientStart" />
 
     <TextView
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/total_caloriesToBeBurned"
         android:layout_width="123dp"
         android:layout_height="80dp"
@@ -203,6 +203,7 @@
 
 
     <TextView
+
         android:id="@+id/tv_artificial_timer"
         android:layout_width="wrap_content"
         android:layout_height="73dp"
@@ -212,7 +213,7 @@
         android:textColor="@color/somewhat_black"
         android:textSize="30dp"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

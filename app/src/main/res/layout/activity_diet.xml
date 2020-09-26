@@ -14,12 +14,11 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#FFFFFF"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:gravity="left"
-        android:paddingTop="20dp">
+        android:background="#FFFFFF"
+        android:gravity="left">
 
         <TextView
             android:id="@+id/textView16"
@@ -33,36 +32,23 @@
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.083"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!--        <de.hdodenhof.circleimageview.CircleImageView-->
-        <!--            android:layout_width="45dp"-->
-        <!--            android:layout_height="45dp"-->
-        <!--            android:src="@drawable/orangeai_logo"-->
-        <!--            android:background="@drawable/gradient2"-->
-        <!--            app:layout_constraintCircleRadius="20dp"-->
-        <!--            app:civ_border_color="@android:color/darker_gray"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintHorizontal_bias="0.918"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent"-->
-        <!--            app:layout_constraintVertical_bias="0.0" />-->
-
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@mipmap/ic_launcher"
-            app:civ_border_color="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.918"
+            app:layout_constraintHorizontal_bias="0.081"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.555" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/cute12"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_v7nRH3.json" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -200,111 +186,211 @@
                         android:paddingRight="10dp"
                         app:layout_constraintBottom_toBottomOf="parent">
 
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:gravity="center_vertical">-->
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:gravity="center_horizontal">-->
+<!--                                <LinearLayout-->
+<!--                                    android:gravity="center_horizontal"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal">-->
+<!--                                    <ImageView-->
+<!--                                        android:layout_gravity="center_vertical"-->
+<!--                                        android:layout_width="15dp"-->
+<!--                                        android:layout_height="15dp"-->
+<!--                                        android:src="@drawable/ic_dot"-->
+<!--                                        android:layout_marginRight="5dp"-->
+<!--                                        app:tint="#2067F3" />-->
+<!--                                    <TextView-->
+<!--                                        android:layout_marginRight="5dp"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Proteins"/>-->
+
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/progress_proteins"-->
+<!--                                    style="?android:attr/progressBarStyleHorizontal"-->
+<!--                                    android:layout_width="80dp"-->
+<!--                                    android:layout_height="wrap_content" />-->
+
+<!--                            </LinearLayout>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_marginLeft="18dp"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:gravity="center_horizontal">-->
+<!--                                <LinearLayout-->
+<!--                                    android:gravity="center_horizontal"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal">-->
+<!--                                    <ImageView-->
+<!--                                        android:layout_gravity="center_vertical"-->
+<!--                                        android:layout_width="15dp"-->
+<!--                                        android:layout_height="15dp"-->
+<!--                                        android:src="@drawable/ic_dot"-->
+<!--                                        android:layout_marginRight="5dp"-->
+<!--                                        app:tint="#F32020"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_gravity="center_vertical"-->
+<!--                                        android:layout_marginRight="5dp"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Carbs"/>-->
+
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/progress_carbs"-->
+<!--                                    style="?android:attr/progressBarStyleHorizontal"-->
+<!--                                    android:layout_width="80dp"-->
+<!--                                    android:layout_height="wrap_content" />-->
+
+<!--                            </LinearLayout>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_marginLeft="18dp"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:gravity="center_horizontal">-->
+<!--                                <LinearLayout-->
+<!--                                    android:gravity="center_horizontal"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="horizontal">-->
+<!--                                    <ImageView-->
+<!--                                        android:layout_gravity="center_vertical"-->
+<!--                                        android:layout_width="15dp"-->
+<!--                                        android:layout_height="15dp"-->
+<!--                                        android:src="@drawable/ic_dot"-->
+<!--                                        android:layout_marginRight="5dp"-->
+<!--                                        app:tint="#F37420"/>-->
+<!--                                    <TextView-->
+<!--                                        android:layout_marginRight="5dp"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Lipids"/>-->
+
+<!--                                </LinearLayout>-->
+<!--                                <ProgressBar-->
+<!--                                    android:id="@+id/progress_lipids"-->
+<!--                                    style="?android:attr/progressBarStyleHorizontal"-->
+<!--                                    android:layout_width="80dp"-->
+<!--                                    android:layout_height="wrap_content" />-->
+
+<!--                            </LinearLayout>-->
+
+
+
+
+<!--                        </LinearLayout>-->
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="85dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@android:color/white"
+                            android:gravity="center"
                             android:orientation="horizontal"
-                            android:gravity="center_vertical">
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp">
+
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="70dp"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                android:gravity="center_horizontal">
-                                <LinearLayout
-                                    android:gravity="center_horizontal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
-                                        android:src="@drawable/ic_dot"
-                                        android:layout_marginRight="5dp"
-                                        app:tint="#2067F3" />
-                                    <TextView
-                                        android:layout_marginRight="5dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Proteins"/>
+                                android:layout_marginRight="40dp">
 
-                                </LinearLayout>
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_dot"
+                                    app:tint="#26D129" />
+
                                 <ProgressBar
                                     android:id="@+id/progress_proteins"
                                     style="?android:attr/progressBarStyleHorizontal"
-                                    android:layout_width="80dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="proteins"
+                                    android:textColor="#C8C8C8"
+                                    android:textSize="17dp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_marginLeft="18dp"
-                                android:layout_width="wrap_content"
+                                android:layout_marginRight="40dp"
+                                android:layout_width="70dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:gravity="center_horizontal">
-                                <LinearLayout
-                                    android:gravity="center_horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
-                                        android:src="@drawable/ic_dot"
-                                        android:layout_marginRight="5dp"
-                                        app:tint="#F32020"/>
-                                    <TextView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_marginRight="5dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Carbs"/>
+                                android:orientation="vertical">
 
-                                </LinearLayout>
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_dot"
+                                    app:tint="#FF5722" />
+
                                 <ProgressBar
                                     android:id="@+id/progress_carbs"
                                     style="?android:attr/progressBarStyleHorizontal"
-                                    android:layout_width="80dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
 
+                                <TextView
+                                    android:id="@+id/tv_total_meters_travel"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="carbs"
+                                    android:textColor="#C8C8C8"
+                                    android:textSize="17dp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_marginLeft="18dp"
-                                android:layout_width="wrap_content"
+                                android:layout_width="70dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:gravity="center_horizontal">
-                                <LinearLayout
-                                    android:gravity="center_horizontal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-                                    <ImageView
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_width="15dp"
-                                        android:layout_height="15dp"
-                                        android:src="@drawable/ic_dot"
-                                        android:layout_marginRight="5dp"
-                                        app:tint="#F37420"/>
-                                    <TextView
-                                        android:layout_marginRight="5dp"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Lipids"/>
+                                android:orientation="vertical">
 
-                                </LinearLayout>
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_dot"
+                                    app:tint="#FFC107" />
+
+
                                 <ProgressBar
                                     android:id="@+id/progress_lipids"
                                     style="?android:attr/progressBarStyleHorizontal"
-                                    android:layout_width="80dp"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="lipids"
+                                    android:textColor="#C8C8C8"
+                                    android:textSize="17dp"
+                                    android:textStyle="bold" />
                             </LinearLayout>
-
-
 
 
                         </LinearLayout>

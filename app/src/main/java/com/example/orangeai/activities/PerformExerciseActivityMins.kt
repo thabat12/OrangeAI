@@ -45,11 +45,23 @@ class PerformExerciseActivityMins : AppCompatActivity() {
                 intent.getSerializableExtra(ExerciseActivity.EXTRA_EXERCISE_DETAILS) as ActivityPrograms
         }
         FirestoreClass().loadUserData(this)
-        animationView3.visibility = View.INVISIBLE
-        animationView3Stop.visibility = View.VISIBLE
         if (exerciseDetailModel != null) {
             val title: String = exerciseDetailModel!!.title
             exercise_title_perform.text = title
+
+            if (title.equals("Cycling")) {
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.cycling))
+            } else if (title.equals("Running")) {
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.run))
+            } else if (title.equals("Plank")) {
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.planks_pixteller))
+            } else if (title.equals("Swimming")) {
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.swimming_pixteller))
+            } else if (title.equals("Jumping jacks")) {
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.jumpingjacks_pixteller))
+            } else if (title.equals("Walking")) {
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.walking))
+            }
         }
 
 
@@ -92,8 +104,6 @@ class PerformExerciseActivityMins : AppCompatActivity() {
             view_timer.start()
             timer.start()
             timerRunning = true
-            animationView3Stop.visibility = View.INVISIBLE
-            animationView3.visibility = View.VISIBLE
         }
         fab_pause.setOnClickListener {
 
@@ -105,8 +115,7 @@ class PerformExerciseActivityMins : AppCompatActivity() {
                 fab_pause.text = "Resume Exercise"
                 elapsedTime %= 5000
                 timer.cancel()
-                animationView3Stop.visibility = View.VISIBLE
-                animationView3.visibility = View.INVISIBLE
+
 
             } else {
                 view_timer.base = SystemClock.elapsedRealtime() + stopTime
@@ -114,8 +123,6 @@ class PerformExerciseActivityMins : AppCompatActivity() {
                 view_timer.start()
                 timerRunning = true
                 timer.start()
-                animationView3.visibility = View.VISIBLE
-                animationView3Stop.visibility = View.INVISIBLE
             }
 
         }

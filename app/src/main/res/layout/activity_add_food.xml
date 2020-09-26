@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,21 +10,22 @@
     android:gravity="center_horizontal">
 
     <LinearLayout
+        android:id="@+id/linearLayout17"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp">
-
-
+        android:paddingRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="25dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
             app:cardCornerRadius="10dp">
 
             <androidx.camera.view.PreviewView
@@ -34,53 +35,59 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="15dp"
-            app:cardCornerRadius="10dp"
-            android:elevation="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:elevation="0dp"
             android:padding="5dp"
-            android:layout_marginBottom="15dp">
-        <LinearLayout
-            android:id="@+id/manual_search"
-            android:orientation="horizontal"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:gravity="center_vertical"
-            android:background="@android:color/white"
-            android:layout_width="350dp"
-            android:layout_height="60dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search"/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search Foods"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_photos"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="2dp"/>
+            app:cardCornerRadius="10dp">
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/manual_search"
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Search Foods"
+                    android:textSize="17dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/ic_photos" />
+
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="296dp">
+        android:layout_height="366dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout17">
 
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/camera_capture_button"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:layout_constraintBottom_toTopOf="@+id/test"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,43 +96,60 @@
             app:lottie_loop="true"
             app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json" />
 
-        <TextView
-            android:id="@+id/test"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:gravity="center"
-            android:text="Is this Fried Rice?"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/show_loading"
+            android:layout_width="245dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/camera_capture_button"
-            app:layout_constraintVertical_bias="0.167" />
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_orby" />
 
         <Button
             android:id="@+id/take_me_away"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#78D51A"
-            android:fontFamily="@font/basic"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/circle_unchecked"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/roboto_medium"
             android:text="Yes!"
-            app:layout_constraintBottom_toBottomOf="@+id/button2"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button2"
-            app:layout_constraintHorizontal_bias="0.865"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/test" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="104dp"
+            android:background="@drawable/circle_unchecked"
             android:backgroundTint="@color/lightGray"
             android:fontFamily="@font/basic"
             android:text="No"
+            app:layout_constraintBottom_toBottomOf="@+id/take_me_away"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/take_me_away" />
+
+        <TextView
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="132dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:text="Is this something?"
+            android:textColor="@color/somewhat_black"
+            android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.662"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -136,4 +160,4 @@
 
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

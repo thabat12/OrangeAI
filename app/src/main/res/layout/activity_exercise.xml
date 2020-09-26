@@ -14,12 +14,11 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#FFFFFF"
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:gravity="left"
-        android:paddingTop="20dp">
+        android:background="#FFFFFF"
+        android:gravity="left">
 
         <TextView
             android:id="@+id/textView16"
@@ -33,21 +32,23 @@
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.083"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@mipmap/ic_launcher"
-            app:civ_border_color="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.918"
+            app:layout_constraintHorizontal_bias="0.081"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.555" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/cute12"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_v7nRH3.json" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

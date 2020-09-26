@@ -146,6 +146,21 @@ class ProfileActivity : BaseActivity() {
         //tv_profile_weight.setText(user.weight)
         var BMI = calculateBMI(user.weight, user.height)
         //tv_profile_bmi.setText(BMI)
+         lateinit var programName: String
+        if (user.program == 1) {
+            programName = "Lose Weight"
+        } else if (user.program == 2) {
+            programName = "Become Fit"
+        } else
+            programName = "Build Muscle"
+
+        lateinit var heightString: String
+        val feet = user.height / 12
+        val inches = user.height % 12
+        heightString = "$feet'$inches\""
+
+        tv_my_settings.text = "Age: ${user.age}\nGender: ${user.gender}\nWeight: ${user.weight}\nHeight: ${heightString}\nProgram: $programName"
+
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -112,6 +112,21 @@
                             android:minHeight="400dp">
 
 
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:rotation="90"
+                                android:layout_width="208dp"
+                                android:layout_height="208dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_bias="0.447"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"
+                                app:lottie_url="https://assets6.lottiefiles.com/private_files/lf30_oxurudgk.json" />
+
                             <LinearLayout
                                 android:id="@+id/linearLayout15"
                                 android:layout_width="wrap_content"
@@ -153,20 +168,21 @@
                             </LinearLayout>
 
 
-<!--                            <com.airbnb.lottie.LottieAnimationView-->
-<!--                                android:id="@+id/cute"-->
-<!--                                android:layout_width="200dp"-->
-<!--                                android:layout_height="200dp"-->
-<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintTop_toTopOf="parent"-->
-<!--                                app:layout_constraintVertical_bias="0.3"-->
-<!--                                app:lottie_autoPlay="true"-->
-<!--                                app:lottie_loop="true"-->
-<!--                                app:lottie_url="" />-->
+                            <!--                            <com.airbnb.lottie.LottieAnimationView-->
+                            <!--                                android:id="@+id/cute"-->
+                            <!--                                android:layout_width="200dp"-->
+                            <!--                                android:layout_height="200dp"-->
+                            <!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+                            <!--                                app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--                                app:layout_constraintStart_toStartOf="parent"-->
+                            <!--                                app:layout_constraintTop_toTopOf="parent"-->
+                            <!--                                app:layout_constraintVertical_bias="0.3"-->
+                            <!--                                app:lottie_autoPlay="true"-->
+                            <!--                                app:lottie_loop="true"-->
+                            <!--                                app:lottie_url="" />-->
 
                             <LinearLayout
+                                android:id="@+id/linearLayout9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="216dp"
