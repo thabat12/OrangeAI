@@ -59,9 +59,11 @@
         app:layout_constraintTop_toTopOf="parent"
          >
         <androidx.recyclerview.widget.RecyclerView
+            android:scrollbars="none"
             android:id="@+id/rv_move_exercises"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingBottom="80dp"/>
     </LinearLayout>
 
 

@@ -1,9 +1,12 @@
 package com.example.orangeai.activities
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -17,6 +20,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.orangeai.FirestoreClass
 import com.example.orangeai.R
 import com.example.orangeai.models.User
 import com.example.orangeai.utils.Constants
@@ -28,7 +32,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_diet.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import java.io.IOException
@@ -126,6 +129,7 @@ class ProfileActivity : BaseActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun setUserDataInUI(user: User) {
 
         // TODO (Step 7: Initialize the user details variable)
@@ -144,7 +148,6 @@ class ProfileActivity : BaseActivity() {
         tv_profile_name.setText(user.name)
         tv_profile_email.setText(user.email)
         //tv_profile_weight.setText(user.weight)
-        var BMI = calculateBMI(user.weight, user.height)
         //tv_profile_bmi.setText(BMI)
          lateinit var programName: String
         if (user.program == 1) {
@@ -160,6 +163,26 @@ class ProfileActivity : BaseActivity() {
         heightString = "$feet'$inches\""
 
         tv_my_settings.text = "Age: ${user.age}\nGender: ${user.gender}\nWeight: ${user.weight}\nHeight: ${heightString}\nProgram: $programName"
+
+        //BMI calculation time here
+        // Formula: 703 x weight (lbs) / [height (in)]2
+        val BMI = 703 * user.weight.toDouble() / Math.pow(user.height.toDouble(), 2.0)
+        var healthStatus = "BMI: "
+        if (BMI < 18.5) {
+            healthStatus += "${"%.1f".format(BMI)} Underweight"
+            progress_bmi.progressTintList = ColorStateList.valueOf(Color.RED)
+        } else if ( BMI >= 18.5 && BMI < 25) {
+            healthStatus += "${"%.1f".format(BMI)} Normal"
+            progress_bmi.progressTintList = ColorStateList.valueOf(Color.GREEN)
+        } else if ( BMI >= 25 && BMI < 30) {
+            healthStatus += "${"%.1f".format(BMI)} Overweight"
+            progress_bmi.progressTintList = ColorStateList.valueOf(Color.RED)
+        } else if (BMI >= 30) {
+            healthStatus += "${"%.1f".format(BMI)} Obese"
+            progress_bmi.progressTintList = ColorStateList.valueOf(Color.RED)
+        }
+        tv_bmi_calculation.text = healthStatus
+        progress_bmi.progress = (BMI / 44 * 100).toInt()
 
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

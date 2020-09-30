@@ -11,12 +11,14 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.example.orangeai.FirestoreClass
 
 import com.example.orangeai.R
 import com.example.orangeai.background.SensorService
 import com.example.orangeai.database.MainDatabaseHandler
+import com.example.orangeai.models.ActivityPrograms
+import com.example.orangeai.models.User
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_exercise.*
 
 
@@ -28,9 +30,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : BaseActivity() {
+    companion object {
+        val EXTRA_EXERCISE_STUFF = "extra_exercise_stuff"
+    }
 
     val CITY: String = "delhi,in"
     val API: String = "8118ed6ee68db2debfaaa5a44c832918" // Use your own API key
+    lateinit var currentUser : User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,37 +61,57 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
             //finish()
         }
+        btn_continue_program.setOnClickListener {
+            intent = Intent(this@MainActivity, PerformExerciseActivityMins::class.java)
+            intent.putExtra(EXTRA_EXERCISE_STUFF, ActivityPrograms(1, 2,"Push-Ups", "something",0.325, 0.325, 0.325))
+            startActivity(intent)
+        }
 
-
-        weatherTask().execute()
         getDailyInfo()
 
-        Intent(this, SensorService::class.java).also { intent ->
-            startService(intent)
-        }
+        weatherTask().execute()
+
+//        Intent(this, SensorService::class.java).also { intent ->
+//            startService(intent)
+//        }
     }
 
+
     fun getDailyInfo() {
-        // cal burned, cal gained, water, diet award, exercise award
-        val mainDBHandler = MainDatabaseHandler(this)
-        val todayDetails = mainDBHandler.getTodayData()
+        try {
+            // cal burned, cal gained, water, diet award, exercise award
+            val mainDBHandler = MainDatabaseHandler(this)
+            val todayDetails = mainDBHandler.getTodayData()
 
-        val calBCurrent = todayDetails.caloriesBurned
-        val calBGoal = todayDetails.caloriesBurnGoal
-        val calGCurrent = todayDetails.caloriesGained
-        val calGGoal = todayDetails.caloriesGainGoal
+            val calBCurrent = todayDetails.caloriesBurned
+            val calBGoal = todayDetails.caloriesBurnGoal
+            val calGCurrent = todayDetails.caloriesGained
+            val calGGoal = todayDetails.caloriesGainGoal
 
-        tv_calories_burned.text = "$calBCurrent /$calBGoal Calories Burned"
-        tv_calories_gained.text = "$calGCurrent /$calGGoal Calories Gained"
+            tv_calories_burned.text = "$calBCurrent /$calBGoal Calories Burned"
+            tv_calories_gained.text = "$calGCurrent /$calGGoal Calories Gained"
 
-        val calBProgress = ((calBCurrent.toDouble() / calBGoal.toDouble()) * 100).toInt()
-        val calGProgress = ((calGCurrent.toDouble() / calGGoal.toDouble()) * 100).toInt()
+            val calBProgress = ((calBCurrent.toDouble() / calBGoal.toDouble()) * 100).toInt()
+            val calGProgress = ((calGCurrent.toDouble() / calGGoal.toDouble()) * 100).toInt()
 
-        pb_calories_burn.progress = calBProgress
-        pb_calories_gain.progress = calGProgress
+            pb_calories_burn.progress = calBProgress
+            pb_calories_gain.progress = calGProgress
+            tv_greetings.text = "Good Evening,\nAbhinav!"
 
-        tv_program_name.text = todayDetails.program
-        tv_program_day.text = "Program day ${todayDetails.currentDay.toString()} /30 "
+            tv_program_name.text = todayDetails.program
+            tv_program_day.text = "Program day ${todayDetails.currentDay.toString()} /30 "
+
+        } catch (e: Exception) {
+            tv_calories_burned.text = "0 Calories Burned"
+            tv_calories_gained.text = "0 Calories Gained"
+
+            pb_calories_burn.progress = 0
+            pb_calories_gain.progress = 0
+
+            tv_program_name.text = "Become Fit"
+            tv_program_day.text = "Program day 1 /30"
+        }
+
     }
 
 

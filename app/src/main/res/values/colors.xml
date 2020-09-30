@@ -56,4 +56,6 @@
     <color name="bg_screen2">#A569BD</color>
     <color name="bg_screen3">#DC7633</color>
     <color name="bg_screen4">#F5B041</color>
+
+    <color name="green">#25F10E</color>
 </resources>

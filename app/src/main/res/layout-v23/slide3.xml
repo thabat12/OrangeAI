@@ -23,17 +23,17 @@
         app:lottie_url="https://assets6.lottiefiles.com/packages/lf20_9Sc5L6.json" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="153dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="127dp"
+        android:layout_marginStart="95dp"
 
-        android:layout_marginEnd="130dp"
+        android:layout_marginEnd="97dp"
 
         android:layout_marginBottom="610dp"
-        android:text="Dark Mode"
+        android:text="Full Automation"
         android:textColor="@android:color/white"
         android:textSize="@dimen/slide_title"
         android:textStyle="bold"

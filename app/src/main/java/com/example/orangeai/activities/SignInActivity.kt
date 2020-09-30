@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
+import com.example.orangeai.FirestoreClass
 import com.example.orangeai.R
 import com.example.orangeai.activities.BaseActivity
 import com.example.orangeai.activities.MainActivity
 import com.example.orangeai.models.User
 import com.google.firebase.auth.FirebaseAuth
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : BaseActivity() {

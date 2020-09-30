@@ -29,52 +29,42 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
                 <TextView
-                    android:textColor="@color/white"
                     android:id="@+id/name_profile_setup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="84dp"
-                    android:text=""
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="80dp"
+                    android:text="sssss"
+                    android:textColor="@color/white"
                     android:textSize="35sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.116"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:gravity="left"
                     android:id="@+id/tv_before"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
+                    android:gravity="left"
                     android:text="Welcome to OrangeAI"
+                    android:textColor="@color/white"
                     android:textSize="19sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.902" />
+                    app:layout_constraintStart_toStartOf="@+id/name_profile_setup"
+                    app:layout_constraintTop_toBottomOf="@+id/name_profile_setup" />
 
                 <TextView
-                    android:textColor="@color/white"
                     android:id="@+id/tv_after"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="39dp"
                     android:alpha="0"
                     android:gravity="left"
                     android:text="First, let's set up your profile"
+                    android:textColor="@color/white"
                     android:textSize="19sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.902" />
+                    app:layout_constraintStart_toStartOf="@+id/name_profile_setup"
+                    app:layout_constraintTop_toBottomOf="@+id/name_profile_setup" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

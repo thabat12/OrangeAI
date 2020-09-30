@@ -6,14 +6,15 @@ import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.orangeai.FirestoreClass
 import com.example.orangeai.R
 import com.example.orangeai.models.ActivityPrograms
 import com.example.orangeai.models.ExerciseHistory
 import com.example.orangeai.models.User
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_perform_exercise_mins.*
 import kotlinx.android.synthetic.main.activity_perform_exercise_mins.exercise_title_perform
 import kotlinx.android.synthetic.main.activity_perform_exercise_mins.fab_start
@@ -43,6 +44,9 @@ class PerformExerciseActivityMins : AppCompatActivity() {
         if (intent.hasExtra(ExerciseActivity.EXTRA_EXERCISE_DETAILS)) {
             exerciseDetailModel =
                 intent.getSerializableExtra(ExerciseActivity.EXTRA_EXERCISE_DETAILS) as ActivityPrograms
+        } else if (intent.hasExtra(MainActivity.EXTRA_EXERCISE_STUFF)) {
+            exerciseDetailModel =
+                intent.getSerializableExtra(MainActivity.EXTRA_EXERCISE_STUFF) as ActivityPrograms
         }
         FirestoreClass().loadUserData(this)
         if (exerciseDetailModel != null) {
@@ -54,11 +58,11 @@ class PerformExerciseActivityMins : AppCompatActivity() {
             } else if (title.equals("Running")) {
                 iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.run))
             } else if (title.equals("Plank")) {
-                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.planks_pixteller))
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.planks))
             } else if (title.equals("Swimming")) {
                 iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.swimming_pixteller))
             } else if (title.equals("Jumping jacks")) {
-                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.jumpingjacks_pixteller))
+                iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.jumpingjacks))
             } else if (title.equals("Walking")) {
                 iv_exercise_type.setImageDrawable(resources.getDrawable(R.drawable.walking))
             }
@@ -155,13 +159,15 @@ class PerformExerciseActivityMins : AppCompatActivity() {
 
     }
     fun customizeCalories(loggedInUser: User) {
-        if (loggedInUser.weight <= 135) {
-            calPerMin = exerciseDetailModel!!.calPerMinL
-        } else if (loggedInUser.weight in 136..162) {
-            calPerMin = exerciseDetailModel!!.calPerMinM
-        } else {
-            calPerMin = exerciseDetailModel!!.calPerMinH
-        }
+        Log.e("Logged in inside Mins", loggedInUser.toString())
+            if (loggedInUser.weight <= 135) {
+                calPerMin = exerciseDetailModel!!.calPerMinL
+            } else if (loggedInUser.weight in 136..162) {
+                calPerMin = exerciseDetailModel!!.calPerMinM
+            } else {
+                calPerMin = exerciseDetailModel!!.calPerMinH
+            }
+
 
 
     }

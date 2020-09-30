@@ -3,13 +3,13 @@ package com.example.orangeai.activities
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import com.example.orangeai.FirestoreClass
 import com.example.orangeai.R
 import com.example.orangeai.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : BaseActivity() {

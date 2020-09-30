@@ -446,9 +446,9 @@
                 android:id="@+id/camera_capture_button"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                app:lottie_autoPlay="true"
+                app:lottie_autoPlay="false"
                 app:lottie_loop="true"
-                app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json" />
+                app:lottie_rawRes="@raw/orby" />
 
 
         </LinearLayout>

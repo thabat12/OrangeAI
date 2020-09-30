@@ -9,12 +9,12 @@ import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import com.example.orangeai.FirestoreClass
 import com.example.orangeai.R
 import com.example.orangeai.activities.PerformExerciseActivityMins.Companion.EXERCISE_DETAILS
 import com.example.orangeai.models.ActivityPrograms
 import com.example.orangeai.models.ExerciseHistory
 import com.example.orangeai.models.User
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_perform_exercise_mins.*
 import kotlinx.android.synthetic.main.activity_perform_exercise_mins.exercise_title_perform
 import kotlinx.android.synthetic.main.activity_perform_exercise_mins.fab_start
@@ -52,6 +52,9 @@ class PerformExerciseActivityReps : AppCompatActivity() {
         tv_artificial_timer.visibility = View.GONE
         imageView26.visibility = View.GONE
         total_caloriesToBeBurned.visibility = View.GONE
+        cardView2.visibility = View.GONE
+        cardView_something.visibility = View.GONE
+        show_text_prompt.visibility = View.GONE
 
 
         if (intent.hasExtra(ExerciseActivity.EXTRA_EXERCISE_DETAILS)) {
@@ -81,6 +84,9 @@ class PerformExerciseActivityReps : AppCompatActivity() {
             tv_artificial_timer.visibility = View.VISIBLE
             imageView26.visibility = View.VISIBLE
             total_caloriesToBeBurned.visibility = View.VISIBLE
+            cardView2.visibility = View.VISIBLE
+            cardView_something.visibility = View.VISIBLE
+            show_text_prompt.visibility = View.VISIBLE
             total_caloriesToBeBurned.text = "Total Calories: "+ "%.1f".format(totalCaloriesToBeBurned)
 
             startExercise()
@@ -97,6 +103,19 @@ class PerformExerciseActivityReps : AppCompatActivity() {
         } else {
             calPerRep = exerciseDetailModel!!.calPerMinH
         }
+
+
+        val title = exerciseDetailModel!!.title
+        if (title.equals("Pull-Ups")) {
+            iv_reps_type.setImageDrawable(getDrawable(R.drawable.pullups))
+        } else if (title.equals("Squats")) {
+            iv_reps_type.setImageDrawable(getDrawable(R.drawable.squats))
+        } else if (title.equals("Push-Ups")) {
+            iv_reps_type.setImageDrawable(getDrawable(R.drawable.planks))
+        }
+
+
+
     }
 
     fun startExercise() {

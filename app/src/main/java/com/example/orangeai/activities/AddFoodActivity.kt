@@ -283,7 +283,7 @@ open class AddFoodActivity: AppCompatActivity() {
                     val text = label.text
                     val confidence = label.confidence
                     val index = label.index
-                    test.text = "Is this a/ an " + text + "?" + confidence.toString()
+                    test.text = "Is this a/ an " + text + "?"
                     take_me_away.visibility = View.VISIBLE
                     button2.visibility  =View.VISIBLE
                     take_me_away.setOnClickListener {

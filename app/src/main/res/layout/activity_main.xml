@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/tv_greetings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -274,6 +274,7 @@
                                     app:layout_constraintTop_toBottomOf="@+id/tv_program_day" />
 
                                 <Button
+                                    android:id="@+id/btn_continue_program"
                                     android:textColor="@android:color/white"
                                     android:fontFamily="@font/roboto_medium"
                                     android:textSize="15dp"
@@ -568,7 +569,7 @@
                 android:layout_height="75dp"
                 app:lottie_autoPlay="false"
                 app:lottie_loop="false"
-                app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json" />
+                app:lottie_rawRes="@raw/orby" />
 
 
         </LinearLayout>

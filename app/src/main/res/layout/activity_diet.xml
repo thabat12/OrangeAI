@@ -309,13 +309,30 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical"
                                 android:layout_marginRight="40dp">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_dot"
+                                        app:tint="#26D129" />
+                                    <TextView
+                                        android:id="@+id/tv_protein_amount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="110g"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="5dp"
+                                        android:fontFamily="@font/roboto_medium"
+                                        android:textColor="#C8C8C8"
+                                        android:textSize="15dp"/>
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_dot"
-                                    app:tint="#26D129" />
+                                </LinearLayout>
+
+
 
                                 <ProgressBar
                                     android:id="@+id/progress_proteins"
@@ -339,12 +356,28 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_dot"
-                                    app:tint="#FF5722" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_dot"
+                                        app:tint="#FF3535" />
+                                    <TextView
+                                        android:id="@+id/tv_carb_amount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0g"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="5dp"
+                                        android:fontFamily="@font/roboto_medium"
+                                        android:textColor="#C8C8C8"
+                                        android:textSize="15dp"/>
+
+                                </LinearLayout>
 
                                 <ProgressBar
                                     android:id="@+id/progress_carbs"
@@ -368,12 +401,28 @@
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
-                                <ImageView
-                                    android:layout_width="30dp"
-                                    android:layout_height="30dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_dot"
-                                    app:tint="#FFC107" />
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/ic_dot"
+                                        app:tint="#36A8FF" />
+                                    <TextView
+                                        android:id="@+id/tv_lipid_amount"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="0g"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="5dp"
+                                        android:fontFamily="@font/roboto_medium"
+                                        android:textColor="#C8C8C8"
+                                        android:textSize="15dp"/>
+
+                                </LinearLayout>
 
 
                                 <ProgressBar
@@ -587,9 +636,9 @@
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_marginTop="2dp"
-                app:lottie_autoPlay="true"
+                app:lottie_autoPlay="false"
                 app:lottie_loop="true"
-                app:lottie_url="https://assets1.lottiefiles.com/packages/lf20_wEt2nn.json" />
+                app:lottie_rawRes="@raw/orby" />
 
 
         </LinearLayout>

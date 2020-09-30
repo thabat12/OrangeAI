@@ -88,7 +88,6 @@ class ExerciseDatabaseHandler(context: Context) :
             }
             cursor.close()
         } catch (e: SQLiteException) {
-            db.execSQL(selectQuery)
             return ArrayList()
         }
         return exerciseList

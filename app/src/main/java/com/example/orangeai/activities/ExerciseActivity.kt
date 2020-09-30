@@ -282,6 +282,7 @@ open class ExerciseActivity : BaseActivity() , SensorEventListener {
             total_calories_burned.text = totalCaloriesBurnedString + " cal"
             progress_miles.progress = ((totalMilesTraveled / 5) * 100).toInt()
             progress_todo.progress = ( (todoSize.toDouble() / 5) * 100).toInt()
+            tv_total_meters_travel.text = totalMetersTravelString
             todo_text.text = "$todoSize done"
 
         }

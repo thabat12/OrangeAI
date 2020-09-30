@@ -10,14 +10,15 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.WindowManager
+import com.example.orangeai.FirestoreClass
 import com.example.orangeai.R
+import com.example.orangeai.database.DietDatabaseHandler
 import com.example.orangeai.database.ExerciseHistoryDatabaseHandler
 import com.example.orangeai.database.MainDatabaseHandler
 import com.example.orangeai.models.Today
 import com.example.orangeai.models.User
 import com.example.orangeai.utils.Constants
 import com.google.firebase.firestore.FirebaseFirestore
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_profile_setup.*
 import java.lang.NullPointerException
 import java.text.SimpleDateFormat
@@ -27,16 +28,16 @@ class SplashActivity : BaseActivity() {
 
     var keepRunning = true
     lateinit var firestoreContents: User
-    private val sFireStore = FirebaseFirestore.getInstance()
+
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         try{
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_splash)
+            val sFireStore = FirebaseFirestore.getInstance()
 
-
-
+            initializeAllDatabases()
 
             val currentTime = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault())
                 .format(Date())
@@ -95,6 +96,12 @@ class SplashActivity : BaseActivity() {
         }
 
 
+    }
+
+    fun initializeAllDatabases() {
+        val mainDB = MainDatabaseHandler(this)
+        val dietDB = DietDatabaseHandler(this)
+        val exerciseDB = ExerciseHistoryDatabaseHandler(this)
     }
 
 

@@ -73,7 +73,6 @@ class DietActivity : BaseActivity() {
         val dataGetter = setRecipes(this)
         val dataModelsList = dataGetter.createModels()
         setUpRecipesRecyclerView(dataModelsList)
-
         try {
             val dietGetter = DietDatabaseHandler(this)
             val anotherDataModelsList = dietGetter.getFoodData()
@@ -101,12 +100,24 @@ class DietActivity : BaseActivity() {
         val arrayOfInts = anotherGetter.getTodayMacroNutrientData(dateString)
         // proteins, carbs, lipids: order of this array
 
-        progress_proteins.progress = ((arrayOfInts.get(0).toDouble()) / 112 * 100).toInt()
-        progress_carbs.progress = ((arrayOfInts.get(1).toDouble()) / 150 * 100).toInt()
-        progress_lipids.progress = ((arrayOfInts.get(2).toDouble()) / 50 * 100).toInt()
+        Log.e("ArrayofInts", arrayOfInts)
+        val arrayScanner = Scanner(arrayOfInts)
+        val proteinAmount = arrayScanner.nextDouble().toInt()
+        val carbAmount = arrayScanner.nextDouble().toInt()
+        val lipidAmount = arrayScanner.nextDouble().toInt()
+
+        Log.e("Dis one", "proteins: $proteinAmount carbs: $carbAmount lipids: $lipidAmount")
+
+        progress_proteins.progress = ((proteinAmount / 112.0) * 100).toInt()
+        progress_carbs.progress = ((carbAmount / 150.0) * 100).toInt()
+        progress_lipids.progress = ((lipidAmount / 50.0) * 100).toInt()
         Log.e("arrayOfInts", arrayOfInts)
         // cool everything is set now
 
+
+        tv_protein_amount.text = "$proteinAmount g"
+        tv_carb_amount.text = "$carbAmount g"
+        tv_lipid_amount.text = "$lipidAmount g"
 
     }
     fun modelPreprocessing(model: ArrayList<FoodImages>) : ArrayList<FoodImages> {

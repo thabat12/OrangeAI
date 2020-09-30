@@ -119,25 +119,30 @@ class DietDatabaseHandler(context: Context) :
 
         var something = IntArray(3)
 
-        val cursor: Cursor = db.rawQuery(selectQuery, null)
-        while (cursor.moveToNext()) {
-            val foodDate = cursor.getString(cursor.getColumnIndex(FOOD_DATE))
-            val foodDateScanner: Scanner = Scanner(foodDate)
-            val foodDateComparison = foodDateScanner.next()
-            if (dateCheck.equals(foodDateComparison)) {
-                val foodProteins = cursor.getDouble(cursor.getColumnIndex(FOOD_PROTEINS))
-                val foodCarbs = cursor.getDouble(cursor.getColumnIndex(FOOD_CARBS))
-                val foodLipids = cursor.getDouble(cursor.getColumnIndex(FOOD_LIPIDS))
-                Log.e("SAVING TO DIETDB" , "$foodProteins")
-                proteins += foodProteins
-                carbs += foodCarbs
-                lipids += foodLipids
+        try {
+            val cursor: Cursor = db.rawQuery(selectQuery, null)
+            while (cursor.moveToNext()) {
+                val foodDate = cursor.getString(cursor.getColumnIndex(FOOD_DATE))
+                val foodDateScanner: Scanner = Scanner(foodDate)
+                val foodDateComparison = foodDateScanner.next()
+                if (dateCheck.equals(foodDateComparison)) {
+                    val foodProteins = cursor.getDouble(cursor.getColumnIndex(FOOD_PROTEINS))
+                    val foodCarbs = cursor.getDouble(cursor.getColumnIndex(FOOD_CARBS))
+                    val foodLipids = cursor.getDouble(cursor.getColumnIndex(FOOD_LIPIDS))
+                    Log.e("SAVING TO DIETDB" , "$foodProteins")
+                    proteins += foodProteins
+                    carbs += foodCarbs
+                    lipids += foodLipids
+                }
             }
+            something.set(0, proteins.toInt())
+            something.set(1, proteins.toInt())
+            something.set(2, proteins.toInt())
+            return "$proteins $carbs $lipids"
+        } catch (e: Exception) {
+            return  "0 0 0"
         }
-        something.set(0, proteins.toInt())
-        something.set(1, proteins.toInt())
-        something.set(2, proteins.toInt())
-        return "$proteins $carbs $lipids"
+
     }
     /*
     *

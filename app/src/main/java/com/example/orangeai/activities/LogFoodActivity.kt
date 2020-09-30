@@ -76,8 +76,8 @@ class LogFoodActivity : AppCompatActivity() {
             lipids = foodDetailsModel!!.lipidValue
             protein = foodDetailsModel!!.proteinValue
             food_name_show.text = foodDetailsModel!!.foodName
-            food_description.text = "To be added (food description)"
-            food_calories.text = foodDetailsModel!!.calories.toString()
+            food_description.text = "Press save to log 1 serving automatically!"
+            food_calories.text = foodDetailsModel!!.calories.toString() + " cal"
             food_protein.text = foodDetailsModel!!.proteinName + foodDetailsModel!!.proteinValue.toString()
             food_carbs.text = foodDetailsModel!!.carbName + foodDetailsModel!!.carbValue.toString()
             food_lipids.text = foodDetailsModel!!.lipidName + foodDetailsModel!!.lipidValue.toString()

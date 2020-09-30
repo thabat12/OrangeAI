@@ -49,11 +49,32 @@ open class SearchFoodsAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.setSelected(selectedPos == position)
         val model = list[position]
-        holder.itemView.food_name.text = model.foodName
+
+        var nameShortened = ""
+        if (model.foodName.length > 25) {
+            nameShortened = model.foodName.substring(0, 24) + "..."
+        } else {
+            nameShortened = model.foodName
+        }
+        nameShortened = nameShortened.toLowerCase().capitalize()
+
+
+        holder.itemView.food_name.text = nameShortened
         holder.itemView.calories.text = model.calories.toString()
-        holder.itemView.protein.text = "${model.proteinName}: ${model.proteinValue}"
-        holder.itemView.lipids.text = "${model.lipidName}: ${model.lipidValue}"
-        holder.itemView.carbs.text = "${model.carbName}: ${model.carbValue}"
+        holder.itemView.protein.text = "Protein: ${model.proteinValue}"
+        holder.itemView.lipids.text = "Lipids: ${model.lipidValue}"
+        holder.itemView.carbs.text = "Carbs: ${model.carbValue}"
+        var description = ""
+        var calories = model.calories
+        if (calories < 40) {
+            description = "This is a light meal"
+        } else if (calories >= 40 && calories < 400) {
+            description = "This is a moderate meal"
+        } else {
+            description = "This is a heavy meal"
+        }
+        description += " (per serving)"
+        holder.itemView.description.text = description
 
 
 

@@ -23,7 +23,20 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/situps" /> -->
-
+    <TextView
+        android:id="@+id/show_text_prompt"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="You will be directed to the finishing screen upon completion of this exercise"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_something" />
 
     <TextView
         android:id="@+id/text_visible"
@@ -46,7 +59,7 @@
         android:layout_width="170dp"
         android:layout_height="200dp"
         android:layout_marginBottom="200dp"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.115"
@@ -55,18 +68,24 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/background_gradient"
             android:padding="10dp">
 
             <TextView
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="How many Minutes?"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:id="@+id/edit_text_mins"
                 android:layout_width="138dp"
                 android:layout_height="70dp"
@@ -90,26 +109,33 @@
         android:layout_width="170dp"
         android:layout_height="200dp"
         android:visibility="gone"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="@+id/card_visible_one"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/card_visible_one"
         app:layout_constraintTop_toTopOf="@+id/card_visible_one">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/background_gradient"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
+
             <TextView
-                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="How many Times?"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:layout_width="138dp"
                 android:layout_height="70dp"
                 android:id="@+id/edit_text_reps"
@@ -133,7 +159,7 @@
         android:text="Begin The exercise!"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -173,62 +199,127 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <ImageView
-        android:id="@+id/imageView26"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="316dp"
-        android:src="@drawable/caloriesicon"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="370dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="44dp"
+        app:cardCornerRadius="9dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@color/colorGradientStart" />
+        app:layout_constraintTop_toTopOf="@+id/text_visible">
 
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/total_caloriesToBeBurned"
-        android:layout_width="123dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="452dp"
-        android:gravity="center"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView26"
-        app:layout_constraintEnd_toStartOf="@+id/imageView26"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView26"
-        app:layout_constraintTop_toTopOf="@+id/imageView26"
-        app:layout_constraintVertical_bias="0.0" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gradient">
 
 
-    <TextView
+            <TextView
+                android:id="@+id/tv_artificial_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="73dp"
+                android:gravity="center"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        android:id="@+id/tv_artificial_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="73dp"
-        android:layout_marginBottom="468dp"
-        android:gravity="center"
-        android:text="00:00"
-        android:textColor="@color/somewhat_black"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="9dp"
+        android:id="@+id/cardView_something"
+        android:layout_width="370dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/reps_per_min_avg"
-        android:layout_width="254dp"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:text="reps/second = 12.6"
-        android:textSize="20dp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_artificial_timer" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gradient">
+
+            <ImageView
+                android:id="@+id/iv_reps_type"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/weight"
+                app:layout_constraintBottom_toTopOf="@+id/reps_per_min_avg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/reps_per_min_avg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="reps/second = 12.6"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toTopOf="@+id/imageView26"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView26"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="100dp"
+                android:src="@drawable/caloriesicon"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.275"
+                app:layout_constraintStart_toStartOf="parent"
+                app:tint="@color/white" />
+
+            <TextView
+                android:textColor="@color/white"
+                android:visibility="visible"
+                android:id="@+id/total_caloriesToBeBurned"
+                android:layout_width="123dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="452dp"
+                android:gravity="center"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView26"
+                app:layout_constraintEnd_toStartOf="@+id/imageView26"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView26"
+                app:layout_constraintTop_toTopOf="@+id/imageView26"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
 
 
     <!-- TOP: when the exercise begins BOTTOM: when the exercise is about to begin -->

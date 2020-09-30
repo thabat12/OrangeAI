@@ -1,4 +1,4 @@
-package com.projemanag.firebase
+package com.example.orangeai
 
 import android.app.Activity
 import android.util.Log

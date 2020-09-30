@@ -19,7 +19,6 @@ import com.example.orangeai.database.MainDatabaseHandler
 import com.example.orangeai.models.User
 import com.example.orangeai.utils.Constants
 import com.google.firebase.firestore.SetOptions
-import com.projemanag.firebase.FirestoreClass
 import kotlinx.android.synthetic.main.activity_profile_setup.*
 import kotlinx.android.synthetic.main.activity_profile_setup.profile_setup_button
 import kotlinx.android.synthetic.main.test_file.*
