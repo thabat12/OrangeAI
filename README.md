@@ -1,6 +1,8 @@
 # OrangeAI
 
-Log your diet and lifestyle activities through taking pictures of food. There can be different modes: Exercise, Nutrition, Diet
-=======
-Log your diet and lifestyle routines through taking pictures of food. There can be different modes: Exersice, Nutrition, Diet
+congressional app challenge, 3 months, fun. 
 
+Here's the app: 
+https://www.youtube.com/watch?v=pfz5gKCE9XU
+
+android studio has too many updates so this code is most definitely broken now. 
